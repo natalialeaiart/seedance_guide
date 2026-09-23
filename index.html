@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seedance 2.5 — Prompt Guide | Natalia Le</title>
+  <meta name="description" content="Natalia Le's guide to creating precise Seedance 2.5 video editing prompts for changing environments, clothing and other visual elements.">
+  <style>
+    :root{--bg:#f5f4f0;--card:#fff;--text:#151515;--muted:#6e6e6e;--line:#deddd8}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+    .wrap{width:min(900px,calc(100% - 36px));margin:auto}
+    header{padding:34px 0 20px;display:flex;justify-content:space-between;align-items:center}
+    .brand{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    nav a{color:var(--text);text-decoration:none;font-size:13px;margin-left:18px}
+    .hero{padding:70px 0 58px}
+    .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:18px}
+    h1{font-size:clamp(40px,8vw,78px);line-height:.96;letter-spacing:-.055em;margin:0 0 22px;font-weight:700;max-width:760px}
+    .lead{font-size:20px;max-width:700px;margin:0 0 30px;color:#333}
+    .buttons{display:flex;flex-wrap:wrap;gap:10px}
+    .btn{display:inline-block;padding:14px 20px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700;border:1px solid #111}
+    .primary{background:#111;color:#fff}.secondary{color:#111;background:transparent}
+    section{padding:48px 0;border-top:1px solid var(--line)}
+    h2{font-size:clamp(27px,5vw,42px);line-height:1.05;letter-spacing:-.035em;margin:0 0 24px}
+    .intro{font-size:18px;max-width:760px;color:#333}
+    .note{margin:24px 0;padding:22px;background:var(--card);border-radius:18px;border:1px solid var(--line)}
+    .step{display:grid;grid-template-columns:54px 1fr;gap:16px;margin:26px 0;align-items:start}
+    .num{width:42px;height:42px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-weight:700}
+    .step h3{margin:0 0 8px;font-size:20px}.step p{margin:0 0 8px;color:#3d3d3d}
+    .code{background:#171717;color:#f7f7f7;padding:17px 18px;border-radius:14px;white-space:pre-line;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;margin-top:12px}
+    .socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+    .socials a{color:#111;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-size:13px}
+    footer{padding:42px 0 55px;color:var(--muted);font-size:13px}
+    @media(max-width:600px){header{align-items:flex-start}nav{display:none}.hero{padding-top:48px}.lead{font-size:18px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">Natalia Le</div>
+    <nav><a href="#how">How to use</a><a href="#follow">Follow me</a></nav>
+  </header>
+
+  <main>
+    <section class="hero" style="border-top:0">
+      <div class="eyebrow">Seedance 2.5 · Video Edit</div>
+      <h1>How to Create Prompts for Seedance 2.5</h1>
+      <p class="lead">
+        A practical guide to creating precise prompts for editing real video —
+        from changing the environment or outfit to modifying other visual elements —
+        while preserving the original person, performance and camera.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="seedance-25-prompt-engine.pdf" download>Download the Guide ↓</a>
+        <a class="btn secondary" href="seedance-25-prompt-engine.pdf" target="_blank">Open PDF</a>
+      </div>
+    </section>
+
+    <section id="how">
+      <h2>How to Use My Instruction</h2>
+
+      <p class="intro">
+        Use this workflow whenever you want to transform specific elements of an existing video
+        without changing everything else.
+      </p>
+
+      <div class="note">
+        <strong>What can you change?</strong><br>
+        You can use the instruction for environment changes, outfit changes, or other specific
+        visual edits. The key idea is to clearly define what should change and what must stay
+        unchanged in the original video.
+      </div>
+
+      <p class="intro">
+        <strong>How do you write a Seedance 2.5 prompt so the edit works as intended?</strong>
+      </p>
+
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3>Go to ChatGPT</h3>
+          <p>
+            Upload my prompt-structure instruction together with the reference image or images
+            you want to use for the edit.
+          </p>
+          <p>Then describe the task in simple language. For example:</p>
+          <div class="code">@Video1 — original video.
+@Image1 — new environment and outfit.
+
+Change the environment and outfit.
+The woman must remain the same.</div>
+          <p style="margin-top:14px">
+            Or ask for only the change you need, for example: change the environment while
+            keeping the original outfit and performance unchanged.
+          </p>
+          <p>ChatGPT will generate your final Seedance 2.5 prompt.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Creating a reference image</strong><br>
+        When you need a visual reference, you can prepare it in ChatGPT Image first.
+        For example, take a screenshot from your original video and describe the environment,
+        outfit, lighting or other visual changes you want to create.
+      </div>
+
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3>Go to Seedance 2.5</h3>
+          <p>Upload your original video + the reference image or images.</p>
+          <p>Paste the prompt you generated in ChatGPT and generate the edited video.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>The same workflow works for background changes.</strong><br>
+        You can change the environment while keeping yourself, your performance and the original
+        camera setup intact.
+      </div>
+
+      <div class="buttons" style="margin-top:28px">
+        <a class="btn primary" href="seedance-25-prompt-engine.pdf" download>📄 Download the PDF Guide</a>
+      </div>
+    </section>
+
+    <section id="follow">
+      <h2>Follow me on</h2>
+      <div class="socials">
+        <a href="https://www.instagram.com/nataliale.vivid/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@nataliale.vivid" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://t.me/AI_Test_Tube" target="_blank" rel="noopener">Telegram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© Natalia Le · Seedance 2.5 Video Edit Prompt Engine</footer>
+</div>
+</body>
+</html>
