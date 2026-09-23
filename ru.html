@@ -63,10 +63,12 @@
         так, чтобы сам человек, его игра и работа камеры остались прежними.
       </p>
       <div class="buttons">
-        <a class="btn primary" href="seedance-25-prompt-engine.pdf" download>Скачать гайд ↓</a>
-        <a class="btn secondary" href="seedance-25-prompt-engine.pdf" type="application/pdf" target="_blank" rel="noopener" data-pdf>Открыть PDF</a>
+        <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить prompt engine →</a>
       </div>
-      <p class="hint">PDF-инструкция на английском языке.</p>
+      <p class="hint">
+        Инструкция ниже — бесплатная. Prompt engine, файл для загрузки в ChatGPT или Claude,
+        продаётся отдельно; он на английском языке.
+      </p>
     </section>
 
     <section id="how">
@@ -132,13 +134,8 @@
       </div>
 
       <div class="buttons" style="margin-top:28px">
-        <a class="btn primary" href="seedance-25-prompt-engine.pdf" download>📄 Скачать PDF-гайд</a>
-        <a class="btn secondary" href="seedance-25-prompt-engine.pdf" type="application/pdf" target="_blank" rel="noopener" data-pdf>Открыть PDF</a>
+        <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить prompt engine →</a>
       </div>
-      <p class="hint">
-        Открыли страницу внутри встроенного браузера Instagram или TikTok? Если PDF всё равно
-        не открывается, нажмите меню в углу и выберите «Открыть в браузере».
-      </p>
     </section>
 
     <section id="follow">
@@ -157,7 +154,7 @@
 <script>
   // Встроенные браузеры (Instagram, TikTok, Telegram) блокируют window.open,
   // из-за чего ссылка с target="_blank" молча не срабатывает. Откроем в той же вкладке.
-  document.querySelectorAll('a[data-pdf]').forEach(function (a) {
+  document.querySelectorAll('a[data-cta]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
       var win = null;
