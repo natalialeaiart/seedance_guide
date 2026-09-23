@@ -5,14 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seedance 2.5 — Prompt Guide | Natalia Le</title>
   <meta name="description" content="Natalia Le's guide to creating precise Seedance 2.5 video editing prompts for changing environments, clothing and other visual elements.">
+  <link rel="alternate" hreflang="en" href="https://ai-edit-lab.pages.dev/">
+  <link rel="alternate" hreflang="ru" href="https://ai-edit-lab.pages.dev/ru.html">
+  <link rel="alternate" hreflang="x-default" href="https://ai-edit-lab.pages.dev/">
   <style>
     :root{--bg:#f5f4f0;--card:#fff;--text:#151515;--muted:#6e6e6e;--line:#deddd8}
     *{box-sizing:border-box} html{scroll-behavior:smooth}
     body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
     .wrap{width:min(900px,calc(100% - 36px));margin:auto}
-    header{padding:34px 0 20px;display:flex;justify-content:space-between;align-items:center}
+    header{padding:34px 0 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}
     .brand{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+    .head-right{display:flex;align-items:center;gap:20px}
     nav a{color:var(--text);text-decoration:none;font-size:13px;margin-left:18px}
+    .lang{font-size:13px;letter-spacing:.08em;white-space:nowrap;color:var(--muted)}
+    .lang a{color:var(--muted);text-decoration:none}
+    .lang a:hover{color:var(--text)}
+    .lang .on{font-weight:700;color:var(--text)}
     .hero{padding:70px 0 58px}
     .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:18px}
     h1{font-size:clamp(40px,8vw,78px);line-height:.96;letter-spacing:-.055em;margin:0 0 22px;font-weight:700;max-width:760px}
@@ -30,15 +38,19 @@
     .code{background:#171717;color:#f7f7f7;padding:17px 18px;border-radius:14px;white-space:pre-line;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;margin-top:12px}
     .socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
     .socials a{color:#111;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-size:13px}
+    .hint{font-size:13px;color:var(--muted);margin-top:14px;max-width:620px}
     footer{padding:42px 0 55px;color:var(--muted);font-size:13px}
-    @media(max-width:600px){header{align-items:flex-start}nav{display:none}.hero{padding-top:48px}.lead{font-size:18px}}
+    @media(max-width:600px){header{align-items:center}nav{display:none}.hero{padding-top:48px}.lead{font-size:18px}}
   </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="brand">Natalia Le</div>
-    <nav><a href="#how">How to use</a><a href="#follow">Follow me</a></nav>
+    <div class="head-right">
+      <nav><a href="#how">How to use</a><a href="#follow">Follow me</a></nav>
+      <span class="lang"><span class="on">EN</span> · <a href="ru.html" hreflang="ru">RU</a></span>
+    </div>
   </header>
 
   <main>
@@ -52,7 +64,7 @@
       </p>
       <div class="buttons">
         <a class="btn primary" href="seedance-25-prompt-engine.pdf" download>Download the Guide ↓</a>
-        <a class="btn secondary" href="seedance-25-prompt-engine.pdf" target="_blank">Open PDF</a>
+        <a class="btn secondary" href="seedance-25-prompt-engine.pdf" type="application/pdf" target="_blank" rel="noopener" data-pdf>Open PDF</a>
       </div>
     </section>
 
@@ -121,7 +133,12 @@ The woman must remain the same.</div>
 
       <div class="buttons" style="margin-top:28px">
         <a class="btn primary" href="seedance-25-prompt-engine.pdf" download>📄 Download the PDF Guide</a>
+        <a class="btn secondary" href="seedance-25-prompt-engine.pdf" type="application/pdf" target="_blank" rel="noopener" data-pdf>Open PDF</a>
       </div>
+      <p class="hint">
+        Opening this page inside the Instagram or TikTok in-app browser? If the PDF still will not
+        open, tap the menu in the corner and choose “Open in browser”.
+      </p>
     </section>
 
     <section id="follow">
@@ -136,5 +153,18 @@ The woman must remain the same.</div>
 
   <footer>© Natalia Le · Seedance 2.5 Video Edit Prompt Engine</footer>
 </div>
+
+<script>
+  // In-app browsers (Instagram, TikTok, Telegram) block window.open, so a
+  // target="_blank" link silently does nothing there. Fall back to the same tab.
+  document.querySelectorAll('a[data-pdf]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var win = null;
+      try { win = window.open(a.href, '_blank', 'noopener'); } catch (err) { win = null; }
+      if (!win || win.closed || typeof win.closed === 'undefined') window.location.href = a.href;
+    });
+  });
+</script>
 </body>
 </html>
