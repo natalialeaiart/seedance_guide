@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Seedance 2.5 — Prompt Guide | Natalia Le</title>
-  <meta name="description" content="Natalia Le's guide to creating precise Seedance 2.5 video editing prompts for changing environments, clothing and other visual elements.">
+  <title>Seedance 2.5 Prompt Engine — Change the Video, Keep the Person</title>
+  <meta name="description" content="A PDF you upload to ChatGPT or Claude: add a frame from your video and a reference photo, get a ready-to-use Seedance 2.5 prompt. New outfit, location and lighting — same face, same movement, same camera.">
+  <meta property="og:title" content="Seedance 2.5 Prompt Engine — Change the Video, Keep the Person">
+  <meta property="og:description" content="New outfit, location and lighting — the face, the movement and the camera stay from your original footage. 6 steps to your first generation.">
   <link rel="alternate" hreflang="en" href="https://ai-edit-lab.pages.dev/">
   <link rel="alternate" hreflang="ru" href="https://ai-edit-lab.pages.dev/ru.html">
   <link rel="alternate" hreflang="x-default" href="https://ai-edit-lab.pages.dev/">
   <style>
-    :root{--bg:#f5f4f0;--card:#fff;--text:#151515;--muted:#6e6e6e;--line:#deddd8}
+    :root{
+      --bg:#f5f4f0;--card:#fff;--text:#151515;--soft:#3a3a3a;--muted:#6e6e6e;--line:#deddd8;
+      --ink:#111;--change:#c2410c;--change-bg:#fff4ec;--keep:#1f7a4d;--keep-bg:#eef7f1;
+      --radius:18px
+    }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
-    .wrap{width:min(900px,calc(100% - 36px));margin:auto}
-    header{padding:34px 0 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,Helvetica,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
+    .wrap{width:min(1040px,calc(100% - 32px));margin:auto}
+
+    header{padding:28px 0 8px;display:flex;justify-content:space-between;align-items:center;gap:14px}
     .brand{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
     .head-right{display:flex;align-items:center;gap:20px}
     nav a{color:var(--text);text-decoration:none;font-size:13px;margin-left:18px}
@@ -21,26 +28,158 @@
     .lang a{color:var(--muted);text-decoration:none}
     .lang a:hover{color:var(--text)}
     .lang .on{font-weight:700;color:var(--text)}
-    .hero{padding:70px 0 58px}
-    .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:18px}
-    h1{font-size:clamp(40px,8vw,78px);line-height:.96;letter-spacing:-.055em;margin:0 0 22px;font-weight:700;max-width:760px}
-    .lead{font-size:20px;max-width:700px;margin:0 0 30px;color:#333}
-    .buttons{display:flex;flex-wrap:wrap;gap:10px}
-    .btn{display:inline-block;padding:14px 20px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700;border:1px solid #111}
-    .primary{background:#111;color:#fff}.secondary{color:#111;background:transparent}
-    section{padding:48px 0;border-top:1px solid var(--line)}
-    h2{font-size:clamp(27px,5vw,42px);line-height:1.05;letter-spacing:-.035em;margin:0 0 24px}
-    .intro{font-size:18px;max-width:760px;color:#333}
-    .note{margin:24px 0;padding:22px;background:var(--card);border-radius:18px;border:1px solid var(--line)}
-    .step{display:grid;grid-template-columns:54px 1fr;gap:16px;margin:26px 0;align-items:start}
-    .num{width:42px;height:42px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-weight:700}
-    .step h3{margin:0 0 8px;font-size:20px}.step p{margin:0 0 8px;color:#3d3d3d}
-    .code{background:#171717;color:#f7f7f7;padding:17px 18px;border-radius:14px;white-space:pre-line;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;margin-top:12px}
-    .socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    .socials a{color:#111;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-size:13px}
-    .hint{font-size:13px;color:var(--muted);margin-top:14px;max-width:620px}
-    footer{padding:42px 0 55px;color:var(--muted);font-size:13px}
-    @media(max-width:600px){header{align-items:center}nav{display:none}.hero{padding-top:48px}.lead{font-size:18px}}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;grid-template-areas:"top clip" "bottom clip";column-gap:44px;align-items:center;padding:48px 0 44px}
+    .hero-top{grid-area:top;align-self:end}
+    .hero-bottom{grid-area:bottom;align-self:start}
+    .clip{grid-area:clip}
+    .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:16px}
+    h1{font-size:clamp(36px,6vw,60px);line-height:1.02;letter-spacing:-.045em;margin:0 0 20px;font-weight:700}
+    .lead{font-size:20px;margin:0 0 14px;color:#2a2a2a}
+    .sub{font-size:16px;margin:0 0 26px;color:var(--soft)}
+    .buttons{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .btn{display:inline-block;padding:14px 22px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:700;border:1px solid var(--ink)}
+    .primary{background:var(--ink);color:#fff}.secondary{color:var(--ink);background:transparent}
+    .meta{font-size:13px;color:var(--muted);margin-top:14px}
+
+    /* Before/after clip: small 16:9 window */
+    .clip{margin:0;max-width:440px;justify-self:end;width:100%}
+    .clip-frame{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#1b1b1b;border:1px solid var(--line);box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
+    .clip-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .clip-empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#cfcfcf;font-size:14px;padding:16px;background:
+      linear-gradient(90deg,#262626 0 50%,#1d1d1d 50% 100%)}
+    .clip-empty b{display:block;color:#fff;font-size:15px;margin-bottom:4px}
+    .clip.ready .clip-empty{display:none}
+    .clip figcaption{font-size:12px;color:var(--muted);margin-top:10px;letter-spacing:.04em;text-align:center}
+    .clip figcaption .to{margin:0 6px}
+    .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--text)}
+
+    /* Sections */
+    section{padding:52px 0;border-top:1px solid var(--line)}
+    h2{font-size:clamp(26px,4.4vw,38px);line-height:1.1;letter-spacing:-.03em;margin:0 0 10px}
+    .section-lead{font-size:17px;color:var(--soft);margin:0 0 28px;max-width:680px}
+
+    /* Flow strip */
+    .flow{display:flex;align-items:stretch;gap:8px;list-style:none;padding:0;margin:0}
+    .flow li{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 13px;font-size:14px;line-height:1.35}
+    .flow li b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:700}
+    .flow li.engine{background:var(--ink);border-color:var(--ink);color:#fff}
+    .flow li.engine b{color:#bdbdbd}
+    .flow .arr{flex:0 0 auto;align-self:center;color:var(--muted);font-size:18px;padding:0 1px;background:none;border:0}
+
+    /* Pain points */
+    .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none;padding:0;margin:0 0 16px}
+    .pains li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:16px}
+    .callout{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:14px;padding:16px 18px;font-size:16px}
+    .callout p{margin:0}.callout p+p{margin-top:4px;color:var(--soft)}
+
+    /* What you can change */
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .card .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line);color:var(--ink);margin-bottom:14px}
+    .card .ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--soft);font-size:15px}
+    .card .opt{display:inline-block;margin-top:10px;font-size:12px;color:var(--muted)}
+
+    /* CHANGE / KEEP */
+    .example{font-size:16px;margin:0 0 22px}
+    .example span{color:var(--muted);margin-right:6px}
+    .ck{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .ck-col{border-radius:var(--radius);padding:22px;border:1px solid var(--line)}
+    .ck-col.change{background:var(--change-bg);border-color:#f3d3bf}
+    .ck-col.keep{background:var(--keep-bg);border-color:#cfe6d8}
+    .ck-col h3{margin:0 0 4px;font-size:15px;letter-spacing:.14em}
+    .change h3{color:var(--change)} .keep h3{color:var(--keep)}
+    .ck-col p{margin:0 0 14px;color:var(--soft);font-size:15px}
+    .chips{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:0}
+    .chips li{background:#fff;border-radius:999px;padding:6px 12px;font-size:14px;border:1px solid rgba(0,0,0,.06)}
+    .ck-note{margin:14px 0 0;font-size:15px;color:var(--soft)}
+
+    /* Steps */
+    .steps{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .step{display:grid;grid-template-columns:64px 1fr;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px 16px}
+    .num{font-size:28px;font-weight:700;letter-spacing:-.04em;color:#c9c8c2;line-height:1;padding-top:2px;text-align:center}
+    .step h3{margin:0 0 6px;font-size:20px;letter-spacing:-.01em}
+    .step p{margin:0 0 8px;color:var(--soft)}
+    .step p:last-child{margin-bottom:0}
+    .files{list-style:none;padding:0;margin:10px 0 12px;display:flex;flex-wrap:wrap;gap:8px;counter-reset:f}
+    .files li{counter-increment:f;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 7px;font-size:14px;background:var(--bg)}
+    .files li::before{content:counter(f);display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:700}
+    .important{margin-top:12px;padding:12px 14px;border-radius:12px;background:#fff8e1;border:1px solid #f1e2b3;font-size:15px;color:#4a3f1c}
+    .important b{color:#2b2410}
+
+    .prompt{position:relative;margin:12px 0 10px;background:#171717;color:#f3f3f3;border-radius:14px;padding:18px 18px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
+    .prompt .fill{color:#ffd166}
+    .prompt-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px}
+    .prompt-bar small{color:var(--muted);font-size:13px}
+    .copy{font:inherit;font-size:14px;font-weight:700;padding:9px 16px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;white-space:nowrap;flex:0 0 auto}
+    .copy.done{background:var(--keep);border-color:var(--keep)}
+    .eg{font-size:15px;color:var(--soft)}
+    .eg code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+
+    /* Multiple references */
+    .map{display:grid;gap:8px;margin:0 0 14px;padding:0;list-style:none}
+    .map li{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:16px}
+    .map code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-weight:700;font-size:14px}
+
+    /* Mistakes */
+    .mistakes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .mistake{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+    .mistake h3{margin:0 0 6px;font-size:17px;display:flex;align-items:center;gap:10px}
+    .x{flex:0 0 22px;height:22px;border-radius:50%;border:1.5px solid var(--change);position:relative}
+    .x::before,.x::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.5px;background:var(--change);transform:translate(-50%,-50%) rotate(45deg)}
+    .x::after{transform:translate(-50%,-50%) rotate(-45deg)}
+    .mistake p{margin:0;color:var(--soft);font-size:15px}
+    .mistake code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+
+    .platform{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+    .platform p{margin:0;max-width:640px;color:var(--soft);font-size:16px}
+
+    /* Final CTA */
+    .final{background:var(--ink);color:#fff;border-radius:24px;padding:44px 32px;text-align:center;margin:8px 0 0}
+    .final h2{color:#fff;margin-bottom:12px}
+    .final p{color:#cfcfcf;font-size:18px;max-width:560px;margin:0 auto 24px}
+    .final .btn{background:#fff;color:var(--ink);border-color:#fff}
+    .final .final-note{font-size:13px;color:#9a9a9a;margin:14px auto 0}
+    .get{list-style:none;padding:0;margin:0 auto 26px;max-width:720px;display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left}
+    .get li{border:1px solid #333;border-radius:14px;padding:14px 16px;font-size:14px;color:#cfcfcf;line-height:1.5}
+    .get b{display:block;color:#fff;font-size:15px;margin-bottom:4px}
+    @media(max-width:600px){.get{grid-template-columns:1fr}}
+    .price{white-space:nowrap}
+    .price s{opacity:.55;font-weight:400;margin-right:2px}
+
+    .socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+    .socials a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 15px;font-size:13px}
+    footer{padding:36px 0 50px;color:var(--muted);font-size:13px}
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;grid-template-areas:"top" "clip" "bottom";row-gap:24px;padding-top:36px}
+      .clip{justify-self:start;max-width:520px}
+      .lead{margin-bottom:0}
+      .cards{grid-template-columns:1fr 1fr}
+      .flow{flex-wrap:wrap}
+      .flow li{flex:1 1 40%}
+      .flow .arr{display:none}
+    }
+    @media(max-width:600px){
+      nav{display:none}
+      .lead{font-size:18px}
+      section{padding:40px 0}
+      .pains,.ck,.mistakes{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr 1fr}
+      .card{padding:16px}
+      .card p{font-size:14px}
+      .flow{flex-direction:column;gap:0}
+      .flow li{flex:none}
+      .flow .arr{display:block;text-align:center;padding:2px 0;font-size:16px;line-height:1.2}
+      .step{grid-template-columns:1fr;padding:18px}
+      .num{text-align:left;font-size:22px;margin-bottom:4px}
+      .map li{grid-template-columns:1fr;gap:2px}
+      .final{padding:34px 20px}
+      .buttons .btn{flex:1 1 auto;text-align:center}
+    }
   </style>
 </head>
 <body>
@@ -48,99 +187,270 @@
   <header>
     <div class="brand">AI Test Tube</div>
     <div class="head-right">
-      <nav><a href="#how">How to use</a><a href="#follow">Follow me</a></nav>
+      <nav><a href="#steps">6 steps</a><a href="#follow">Follow</a></nav>
       <span class="lang"><span class="on">EN</span> · <a href="ru.html" hreflang="ru">RU</a></span>
     </div>
   </header>
 
   <main>
-    <section class="hero" style="border-top:0">
-      <div class="eyebrow">Seedance 2.5 · Video Edit</div>
-      <h1>How to Create Prompts for Seedance 2.5</h1>
-      <p class="lead">
-        A practical guide to creating precise prompts for editing real video —
-        from changing the environment or outfit to modifying other visual elements —
-        while preserving the original person, performance and camera.
-      </p>
-      <div class="buttons">
-        <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine →</a>
+    <!-- 1. The first five seconds: what it is and what you get -->
+    <div class="hero">
+      <div class="hero-top">
+        <div class="eyebrow">Seedance 2.5 Prompt Engine</div>
+        <h1>Change the video. Keep the person.</h1>
+        <p class="lead">
+          A new outfit, a new location, studio lighting — while the face, the movement
+          and the camera stay exactly as you shot them.
+        </p>
       </div>
-      <p class="hint">
-        The workflow below is free to read. The prompt engine — the file you upload to
-        ChatGPT or Claude — is a paid download.
-      </p>
+      <div class="hero-bottom">
+        <p class="sub">
+          The Prompt Engine is a PDF you upload to ChatGPT or Claude.
+          Add a frame from your video and a reference photo, and you get a ready-to-use Seedance 2.5 prompt.
+        </p>
+        <div class="buttons">
+          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
+          <a class="btn secondary" href="#steps">How to use it ↓</a>
+        </div>
+        <p class="meta">6 steps to your first generation · works with ChatGPT or Claude</p>
+      </div>
+
+      <!-- Before/after clip: drop before-after.mp4 (16:9, ~10 s, no audio) next to this page -->
+      <figure class="clip" id="clip">
+        <div class="clip-frame">
+          <video id="clip-video" muted loop playsinline autoplay preload="metadata" aria-label="Example: the original video and the Seedance 2.5 result">
+            <source src="before-after.mp4" type="video/mp4">
+          </video>
+          <div class="clip-empty"><div><b>Before → after</b>16:9 video, ~10 sec, goes here</div></div>
+        </div>
+        <figcaption><span class="tag">Before</span> original footage <span class="to">→</span> <span class="tag">After</span> Seedance 2.5</figcaption>
+      </figure>
+    </div>
+
+    <!-- 2. The whole workflow in one line -->
+    <section>
+      <h2>How it works</h2>
+      <p class="section-lead">You don't write the technical prompt yourself — ChatGPT or Claude writes it for you, following the instructions.</p>
+      <ol class="flow" aria-label="Workflow">
+        <li><b>Video</b>Your original footage</li>
+        <li class="arr" aria-hidden="true">→</li>
+        <li><b>Frame + reference</b>A screenshot from the video and a photo of what you want</li>
+        <li class="arr" aria-hidden="true">→</li>
+        <li class="engine"><b>ChatGPT / Claude</b>+ Prompt Engine</li>
+        <li class="arr" aria-hidden="true">→</li>
+        <li><b>Ready prompt</b>Copy and paste</li>
+        <li class="arr" aria-hidden="true">→</li>
+        <li><b>Seedance 2.5</b>A new video, same person</li>
+      </ol>
     </section>
 
-    <section id="how">
-      <h2>How to Use My Instruction</h2>
-
-      <p class="intro">
-        Use this workflow whenever you want to transform specific elements of an existing video
-        without changing everything else.
-      </p>
-
-      <div class="note">
-        <strong>What can you change?</strong><br>
-        You can use the instruction for environment changes, outfit changes, or other specific
-        visual edits. The key idea is to clearly define what should change and what must stay
-        unchanged in the original video.
-      </div>
-
-      <p class="intro">
-        <strong>How do you write a Seedance 2.5 prompt so the edit works as intended?</strong>
-      </p>
-
-      <div class="step">
-        <div class="num">1</div>
-        <div>
-          <h3>Go to ChatGPT or Claude</h3>
-          <p>
-            Upload the prompt engine together with <strong>two photos, in this order</strong>:
-            first a screenshot of the original video frame, before any change; second the
-            visual reference you want the edit to follow.
-          </p>
-          <p>Then send this request:</p>
-          <div class="code">Study and strictly follow the attached Seedance 2.5 instructions.
-Create the final prompt.
-@Video1 — the source video; the first photo is a screenshot from the original video.
-@Image1 — the visual reference [brief description: woman in a blanket, in the mountains].
-Follow the format and rules from the instructions.</div>
-          <p style="margin-top:14px">
-            Replace the text inside the brackets with a short description of your own reference.
-          </p>
-          <p>You get back the finished Seedance 2.5 prompt.</p>
-        </div>
-      </div>
-
-      <div class="note">
-        <strong>Creating a reference image</strong><br>
-        When you need a visual reference, you can prepare it in ChatGPT Image first.
-        For example, take a screenshot from your original video and describe the environment,
-        outfit, lighting or other visual changes you want to create.
-      </div>
-
-      <div class="step">
-        <div class="num">2</div>
-        <div>
-          <h3>Go to Seedance 2.5</h3>
-          <p>Upload your original video + the reference image or images.</p>
-          <p>Paste the prompt you generated in ChatGPT and generate the edited video.</p>
-        </div>
-      </div>
-
-      <div class="note">
-        <strong>The same workflow works for background changes.</strong><br>
-        You can change the environment while keeping yourself, your performance and the original
-        camera setup intact.
-      </div>
-
-      <div class="buttons" style="margin-top:28px">
-        <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine →</a>
+    <!-- 3. Does the visitor recognize their problem -->
+    <section>
+      <h2>This is for you if you…</h2>
+      <ul class="pains">
+        <li>film at home but want a studio look;</li>
+        <li>want a different outfit without reshooting;</li>
+        <li>want to take a video shot in your room and set it on a street, in a hotel or on a beach.</li>
+      </ul>
+      <div class="callout">
+        <p><strong>Fewer attempts, fewer wasted credits.</strong></p>
+        <p>A well-structured prompt usually gets you a usable result on the first generation — instead of burning time and money on trial and error.</p>
       </div>
     </section>
 
-    <section id="follow">
-      <h2>Follow me on</h2>
+    <!-- 4. What you can change -->
+    <section>
+      <h2>What you can change</h2>
+      <p class="section-lead">One thing, or several at once.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V11"/><path d="M12 11l-8.6 6.2c-.7.5-.4 1.8.6 1.8h16c1 0 1.3-1.3.6-1.8L12 11z"/></svg></div>
+          <h3>Outfit</h3>
+          <p>Take the outfit from a reference photo and put it on the person in your video.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 19L9 9.5l4.2 6.2L16 12l5.5 7z"/><circle cx="17" cy="6" r="2"/></svg></div>
+          <h3>Background</h3>
+          <p>Turn an ordinary room into a studio, a street, a hotel, a beach — any scene you want.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 4c.6 4.4 2.6 6.4 7 7-4.4.6-6.4 2.6-7 7-.6-4.4-2.6-6.4-7-7 4.4-.6 6.4-2.6 7-7z"/><path d="M19 3v4M17 5h4"/></svg></div>
+          <h3>Lighting &amp; details</h3>
+          <p>Light, wind, moving fabric, water, leaves — whenever the scene needs them to look real.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></div>
+          <h3>Camera</h3>
+          <p>The angle, the perspective or the camera movement.</p>
+          <span class="opt">Only if you ask for it</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. The core idea -->
+    <section>
+      <h2>The core idea: change only what you asked for</h2>
+      <p class="section-lead">The Prompt Engine splits your request in two and tells Seedance exactly where the line is.</p>
+      <p class="example"><span>For example:</span> you have a regular video shot at home → you want it to feel like a professional studio shoot.</p>
+      <div class="ck">
+        <div class="ck-col change">
+          <h3>CHANGE</h3>
+          <p>Whatever you asked for:</p>
+          <ul class="chips">
+            <li>outfit</li><li>interior &amp; background</li><li>lighting</li><li>scene details</li><li>camera angle — on request</li>
+          </ul>
+        </div>
+        <div class="ck-col keep">
+          <h3>KEEP</h3>
+          <p>Everything you didn't ask to change:</p>
+          <ul class="chips">
+            <li>face &amp; identity</li><li>hair</li><li>body &amp; proportions</li><li>hands</li><li>movement &amp; gestures</li><li>facial expressions</li><li>composition</li><li>camera &amp; perspective</li><li>timing</li>
+          </ul>
+        </div>
+      </div>
+      <p class="ck-note">By default, the camera stays exactly as it was. Want a different angle or camera move? Just say so in your request.</p>
+    </section>
+
+    <!-- 6. Six steps -->
+    <section id="steps">
+      <h2>6 steps to your first generation</h2>
+      <p class="section-lead">Steps 1–5 happen in ChatGPT or Claude. Step 6 happens in Seedance 2.5.</p>
+      <ol class="steps">
+        <li class="step">
+          <div class="num">01</div>
+          <div>
+            <h3>Take a screenshot from your original video</h3>
+            <p>Pick a frame where the person and the scene are clearly visible. It shows the Prompt Engine the composition and the visual context.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="num">02</div>
+          <div>
+            <h3>Prepare a reference photo</h3>
+            <p>A photo of what you want: the outfit, the interior, a new location or an overall look. One reference can cover the outfit, the background, or both.</p>
+            <div class="important">
+              <b>The person in the reference won't replace yours.</b> The face, hair and body always come from your original video.
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="num">03</div>
+          <div>
+            <h3>Open ChatGPT or Claude and upload 3 files</h3>
+            <ul class="files">
+              <li>Prompt Engine (PDF)</li>
+              <li>Video screenshot</li>
+              <li>Reference photo</li>
+            </ul>
+            <div class="important">
+              <b>Order matters:</b> screenshot first, then the reference — that's how the Prompt Engine knows which is which.<br>
+              <b>Don't upload the examples PDF</b> — it's for reading only.
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="num">04</div>
+          <div>
+            <h3>Copy and send this request</h3>
+            <p>Only replace the text in <span style="background:#fff3c4;padding:0 4px;border-radius:4px">[square brackets]</span>.</p>
+            <div class="prompt" id="prompt-en">Read the attached Seedance 2.5 instructions and follow them exactly. Write a ready-to-use prompt.
+@Video1 — the source video; the first image is a screenshot of one of its frames.
+@Image1 — the reference photo, the second image. Use it for: <span class="fill">[the outfit / the background / both]</span>. What it shows: <span class="fill">[a woman wrapped in a blanket, in the mountains]</span>.
+Follow the format and rules in the instructions.</div>
+            <div class="prompt-bar">
+              <small>No need to write a long technical prompt yourself.</small>
+              <button class="copy" type="button" data-copy="prompt-en">Copy request</button>
+            </div>
+            <p class="eg" style="margin-top:12px">Filled-in example: <code>Use it for: both. What it shows: a woman in a black suit in a modern studio.</code></p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="num">05</div>
+          <div>
+            <h3>Get your ready-to-use prompt</h3>
+            <p>The prompt is always in English — that's by design.</p>
+            <p>Underneath it, you'll get a short breakdown in the same language you wrote your request in: what comes from the video, what comes from the reference, what changes and what stays.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="num">06</div>
+          <div>
+            <h3>Paste the prompt into Seedance 2.5</h3>
+            <p>Open whichever platform you use for Seedance 2.5. Upload your original video and the reference images, paste in the prompt and hit generate.</p>
+            <div class="important">
+              <b>The PDF goes into ChatGPT or Claude only.</b> Seedance just gets the finished prompt.
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 7. Multiple references -->
+    <section>
+      <h2>Using more than one reference</h2>
+      <p class="section-lead">Upload the photos in order and give each one a role, so the model never mixes up what comes from where.</p>
+      <ul class="map">
+        <li><code>@Video1</code><span>the original video and the person (first image: a screenshot of it)</span></li>
+        <li><code>@Image1</code><span>second image — outfit only</span></li>
+        <li><code>@Image2</code><span>third image — background only</span></li>
+      </ul>
+      <p class="eg">One reference for both the outfit and the background works too. Just say so explicitly — the Prompt Engine will separate the two within the same image.</p>
+    </section>
+
+    <!-- 8. Common mistakes -->
+    <section>
+      <h2>Common mistakes</h2>
+      <div class="mistakes">
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Uploading the PDF to Seedance</h3>
+          <p>The Prompt Engine runs in ChatGPT or Claude. Seedance only gets the finished prompt.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Not giving the reference a role</h3>
+          <p>Not “make it look like the photo,” but <code>@Image1 — outfit reference</code> or <code>@Image1 — background reference</code>.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Not saying what has to stay</h3>
+          <p>If keeping the person, their movement or the camera matters to you, make that clear in your request.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Assuming the camera can't change</h3>
+          <p>It stays the same by default. Need a different angle, perspective or camera move? Just ask for it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Where to run it -->
+    <section>
+      <h2>Where to run Seedance 2.5</h2>
+      <div class="platform">
+        <p>
+          I run Seedance 2.5 on Segmind myself — partly because generations there are reasonably priced.
+          But the Prompt Engine isn't tied to any platform: it works with Seedance 2.5 wherever you use it.
+        </p>
+        <a class="btn secondary" href="https://www.segmind.com/models/seedance-2.5" target="_blank" rel="noopener">Seedance 2.5 on Segmind ↗</a>
+      </div>
+    </section>
+
+    <!-- 10. Final call to action -->
+    <div class="final">
+      <h2>Stop wasting generations on trial and error</h2>
+      <p>Describe what you want to change. The Prompt Engine tells Seedance what to change — and what to keep.</p>
+      <ul class="get">
+        <li><b>Prompt Engine (PDF)</b>The instruction file you upload to ChatGPT or Claude. Describe the edit in plain words — it writes the finished Seedance 2.5 prompt for you.</li>
+        <li><b>Examples (PDF)</b>Real before-and-after frames, plus what the finished request looks like inside Seedance 2.5. For reading only — nothing in it gets uploaded.</li>
+      </ul>
+      <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
+      <p class="final-note">Launch price · 2 PDFs, delivered instantly via Gumroad</p>
+    </div>
+
+    <section id="follow" style="border-top:0;padding-bottom:0">
+      <h2>Follow along</h2>
       <div class="socials">
         <a href="https://www.instagram.com/nataliale.vivid/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.tiktok.com/@nataliale.vivid" target="_blank" rel="noopener">TikTok</a>
@@ -149,18 +459,49 @@ Follow the format and rules from the instructions.</div>
     </section>
   </main>
 
-  <footer>© Natalia Le · Seedance 2.5 Video Edit Prompt Engine</footer>
+  <footer>© Natalia Le · Seedance 2.5 Prompt Engine</footer>
 </div>
 
 <script>
   // In-app browsers (Instagram, TikTok, Telegram) block window.open, so a
-  // target="_blank" link silently does nothing there. Fall back to the same tab.
+  // target="_blank" link silently does nothing. Fall back to the same tab.
   document.querySelectorAll('a[data-cta]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
       var win = null;
       try { win = window.open(a.href, '_blank', 'noopener'); } catch (err) { win = null; }
       if (!win || win.closed || typeof win.closed === 'undefined') window.location.href = a.href;
+    });
+  });
+
+  // Before/after clip: the placeholder stays until the file loads; no autoplay with reduced motion.
+  (function () {
+    var clip = document.getElementById('clip');
+    var v = document.getElementById('clip-video');
+    v.addEventListener('loadeddata', function () { clip.classList.add('ready'); });
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      v.removeAttribute('autoplay'); v.pause(); v.controls = true;
+    }
+  })();
+
+  // "Copy request" button, with a fallback for in-app browsers.
+  document.querySelectorAll('button[data-copy]').forEach(function (btn) {
+    var label = btn.textContent;
+    btn.addEventListener('click', function () {
+      var text = document.getElementById(btn.getAttribute('data-copy')).textContent;
+      function done() {
+        btn.textContent = 'Copied ✓'; btn.classList.add('done');
+        setTimeout(function () { btn.textContent = label; btn.classList.remove('done'); }, 2000);
+      }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fallback);
+      else fallback();
     });
   });
 </script>
