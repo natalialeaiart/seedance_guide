@@ -47,10 +47,6 @@
     .clip{margin:0;max-width:440px;justify-self:end;width:100%}
     .clip-frame{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;background:#1b1b1b;border:1px solid var(--line);box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
     .clip-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .clip-empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#cfcfcf;font-size:14px;padding:16px;background:
-      linear-gradient(90deg,#262626 0 50%,#1d1d1d 50% 100%)}
-    .clip-empty b{display:block;color:#fff;font-size:15px;margin-bottom:4px}
-    .clip.ready .clip-empty{display:none}
     .clip figcaption{font-size:12px;color:var(--muted);margin-top:10px;letter-spacing:.04em;text-align:center}
     .clip figcaption .to{margin:0 6px}
     .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--text)}
@@ -215,13 +211,12 @@
         <p class="meta">6 steps to your first generation · works with ChatGPT or Claude</p>
       </div>
 
-      <!-- Before/after clip: drop before-after.mp4 (16:9, ~10 s, no audio) next to this page -->
+      <!-- Before/after clip: before-after.mp4, with before-after.jpg shown while it loads -->
       <figure class="clip" id="clip">
         <div class="clip-frame">
-          <video id="clip-video" muted loop playsinline autoplay preload="metadata" aria-label="Example: the original video and the Seedance 2.5 result">
+          <video id="clip-video" muted loop playsinline autoplay preload="auto" poster="before-after.jpg" aria-label="Example: the original video and the Seedance 2.5 result">
             <source src="before-after.mp4" type="video/mp4">
           </video>
-          <div class="clip-empty"><div><b>Before → after</b>16:9 video, ~10 sec, goes here</div></div>
         </div>
         <figcaption><span class="tag">Before</span> original footage <span class="to">→</span> <span class="tag">After</span> Seedance 2.5</figcaption>
       </figure>
@@ -474,11 +469,9 @@ Follow the format and rules in the instructions.</div>
     });
   });
 
-  // Before/after clip: the placeholder stays until the file loads; no autoplay with reduced motion.
+  // Before/after clip: no autoplay with reduced motion.
   (function () {
-    var clip = document.getElementById('clip');
     var v = document.getElementById('clip-video');
-    v.addEventListener('loadeddata', function () { clip.classList.add('ready'); });
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       v.removeAttribute('autoplay'); v.pause(); v.controls = true;
     }
