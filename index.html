@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Seedance 2.5 Prompt Engine — Change the Video, Keep the Person</title>
+  <title>Seedance 2.5 Prompt Engine — Swap the Outfit or the Background, Keep the Person</title>
   <meta name="description" content="A step-by-step guide to Seedance 2.5 video edits: swap the outfit or the location in footage you already shot while keeping the face, the movement and the camera. Plus the Prompt Engine for ChatGPT or Claude.">
-  <meta property="og:title" content="Seedance 2.5 Prompt Engine — Change the Video, Keep the Person">
+  <meta property="og:title" content="Edit Your Real Footage with AI. Swap the Outfit or the Background. Keep the Person.">
   <meta property="og:description" content="New outfit, location and lighting — the face, the movement and the camera stay from your original footage. The full workflow in 3 steps.">
   <link rel="alternate" hreflang="en" href="https://ai-edit-lab.pages.dev/">
   <link rel="alternate" hreflang="ru" href="https://ai-edit-lab.pages.dev/ru.html">
@@ -36,6 +36,8 @@
     .clip{grid-area:clip}
     .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:16px}
     h1{font-size:clamp(36px,6vw,60px);line-height:1.02;letter-spacing:-.045em;margin:0 0 20px;font-weight:700}
+    h1 span{display:block}
+    h1 span + span{color:var(--change)}
     .lead{font-size:20px;margin:0 0 14px;color:#2a2a2a}
     .sub{font-size:16px;margin:0 0 26px;color:var(--soft)}
     .buttons{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
@@ -138,6 +140,7 @@
     .final h2{color:#fff;margin-bottom:12px}
     .final p{color:#cfcfcf;font-size:18px;max-width:560px;margin:0 auto 24px}
     .final .btn{background:#fff;color:var(--ink);border-color:#fff}
+    .final .final-pay{font-size:16px;color:#fff;font-weight:600;margin:0 auto 16px}
     .final .final-note{font-size:13px;color:#9a9a9a;margin:14px auto 0}
     .get{list-style:none;padding:0;margin:0 auto 26px;max-width:720px;display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left}
     .get li{border:1px solid #333;border-radius:14px;padding:14px 16px;font-size:14px;color:#cfcfcf;line-height:1.5}
@@ -246,8 +249,8 @@
     <!-- 1. The first five seconds: what it is and what you get -->
     <div class="hero">
       <div class="hero-top">
-        <div class="eyebrow">Seedance 2.5 Prompt Engine · Guide</div>
-        <h1>Change the video. Keep the person.</h1>
+        <div class="eyebrow">Edit your real footage with AI</div>
+        <h1><span>Swap the outfit or the background.</span> <span>Keep the person.</span></h1>
         <p class="lead">
           A new outfit, a new location, studio lighting — while the face, the movement
           and the camera stay exactly as you shot them.
@@ -258,7 +261,7 @@
           The Prompt Engine is a PDF instruction file for ChatGPT or Claude. Upload a frame from your video and a reference photo, and you get a ready-to-use, detailed Seedance 2.5 prompt. The step-by-step guide is below.
         </p>
         <div class="buttons">
-          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
+          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price">$7</span></a>
           <a class="btn secondary" href="#steps">Step-by-step guide ↓</a>
         </div>
         <p class="meta">3 steps to your first generation · the prompt comes out in English, the breakdown in the language you write in</p>
@@ -302,8 +305,8 @@
         <li>change the lighting, the weather or the time of day.</li>
       </ul>
       <div class="callout">
-        <p><strong>Fewer attempts, fewer wasted credits.</strong></p>
-        <p>A well-structured prompt usually gets you a usable result on the first generation — instead of burning time and money on trial and error.</p>
+        <p><strong>Every generation costs money.</strong></p>
+        <p>A single 10-second, high-quality generation can cost as much as the Prompt Engine itself. If it saves you even one failed attempt, it has already paid for itself.</p>
       </div>
     </section>
 
@@ -495,7 +498,7 @@ Dress the woman from @Video1 in the dark navy-blue fitted mini dress shown in @I
             <div class="sections">
               <em>MAN</em><em>ENVIRONMENT</em><em>MARINE LIFE MOTION</em><em>CHARACTER PRESERVATION</em><em>MOTION</em><em>CAMERA</em><em>LIGHTING</em><em>INTEGRATION</em><em>CRITICAL</em><em>KEEP UNCHANGED</em><em>NEVER</em><em>QUALITY</em><em>NEGATIVE</em>
             </div>
-            <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
+            <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price">$7</span></a>
           </div>
         </div>
       </div>
@@ -556,8 +559,9 @@ Dress the woman from @Video1 in the dark navy-blue fitted mini dress shown in @I
         <li><b>Prompt Engine (PDF)</b>The instruction file you upload to ChatGPT or Claude. Describe the edit in plain words — it writes the finished Seedance 2.5 prompt for you.</li>
         <li><b>Examples (PDF) — included</b>Real before-and-after frames, plus what the finished request looks like inside Seedance 2.5. For reading only — nothing in it gets uploaded.</li>
       </ul>
-      <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
-      <p class="final-note">Launch price · 2 PDFs, delivered instantly via Gumroad</p>
+      <p class="final-pay">It pays for itself the first time it saves you a failed generation.</p>
+      <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price">$7</span></a>
+      <p class="final-note">2 PDFs, delivered instantly via Gumroad</p>
     </div>
 
     <section id="follow" style="border-top:0;padding-bottom:0">

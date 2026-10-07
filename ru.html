@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Seedance 2.5 Prompt Engine — меняйте видео, сохраняйте человека</title>
+  <title>Seedance 2.5 Prompt Engine — меняйте одежду или фон, человек остаётся прежним</title>
   <meta name="description" content="Бесплатная инструкция: как написать промпт для Seedance 2.5, чтобы сменить одежду или локацию в готовом видео и сохранить лицо, движения и камеру. Шаблон промпта и Prompt Engine для ChatGPT или Claude.">
-  <meta property="og:title" content="Seedance 2.5 Prompt Engine — меняйте видео, сохраняйте человека">
+  <meta property="og:title" content="Редактируйте реальное видео с помощью AI. Меняйте одежду или фон — человек остаётся прежним.">
   <meta property="og:description" content="Новая одежда, локация и свет — а лицо, движения и камера остаются из исходного видео. Бесплатная инструкция и шаблон промпта.">
   <link rel="alternate" hreflang="en" href="https://ai-edit-lab.pages.dev/">
   <link rel="alternate" hreflang="ru" href="https://ai-edit-lab.pages.dev/ru.html">
@@ -36,6 +36,8 @@
     .clip{grid-area:clip}
     .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin-bottom:16px}
     h1{font-size:clamp(36px,6vw,60px);line-height:1.02;letter-spacing:-.045em;margin:0 0 20px;font-weight:700}
+    h1 span{display:block}
+    h1 span + span{color:var(--change)}
     .lead{font-size:20px;margin:0 0 14px;color:#2a2a2a}
     .sub{font-size:16px;margin:0 0 26px;color:var(--soft)}
     .buttons{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
@@ -138,6 +140,7 @@
     .final h2{color:#fff;margin-bottom:12px}
     .final p{color:#cfcfcf;font-size:18px;max-width:560px;margin:0 auto 24px}
     .final .btn{background:#fff;color:var(--ink);border-color:#fff}
+    .final .final-pay{font-size:16px;color:#fff;font-weight:600;margin:0 auto 16px}
     .final .final-note{font-size:13px;color:#9a9a9a;margin:14px auto 0}
     .get{list-style:none;padding:0;margin:0 auto 26px;max-width:720px;display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left}
     .get li{border:1px solid #333;border-radius:14px;padding:14px 16px;font-size:14px;color:#cfcfcf;line-height:1.5}
@@ -246,8 +249,8 @@
     <!-- 1. За 5 секунд: что это, какой результат и два пути -->
     <div class="hero">
       <div class="hero-top">
-        <div class="eyebrow">Seedance 2.5 Prompt Engine · инструкция</div>
-        <h1>Меняйте видео. Сохраняйте человека.</h1>
+        <div class="eyebrow">Редактируйте реальное видео с помощью AI</div>
+        <h1><span>Меняйте одежду или фон.</span> <span>Человек остаётся прежним.</span></h1>
         <p class="lead">
           Новая одежда, другая локация, студийный свет — а лицо, движения и камера
           остаются из вашего исходного видео.
@@ -258,7 +261,7 @@
           Prompt Engine — это PDF-инструкция для ChatGPT или Claude. Вы загружаете кадр из видео и фото-референс — и получаете готовый детальный промпт для Seedance 2.5. Как это сделать — пошагово в инструкции ниже.
         </p>
         <div class="buttons">
-          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
+          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price">$7</span></a>
           <a class="btn secondary" href="#steps">Подробная инструкция ↓</a>
         </div>
         <p class="meta">3 шага до первой генерации · промпт на английском, пояснение — на языке вашего запроса</p>
@@ -302,8 +305,8 @@
         <li>хотите поменять свет, погоду или время суток.</li>
       </ul>
       <div class="callout">
-        <p><strong>Меньше попыток — меньше потраченных кредитов.</strong></p>
-        <p>Хорошо структурированный промпт в большинстве случаев даёт рабочий результат уже с первой генерации — вместо долгих проб и ошибок.</p>
+        <p><strong>Каждая генерация стоит денег.</strong></p>
+        <p>Одна 10-секундная генерация в высоком качестве может стоить столько же, сколько сам Prompt Engine. Если он сэкономит хотя бы одну неудачную попытку — он уже окупился.</p>
       </div>
     </section>
 
@@ -495,7 +498,7 @@ Dress the woman from @Video1 in the dark navy-blue fitted mini dress shown in @I
             <div class="sections">
               <em>MAN</em><em>ENVIRONMENT</em><em>MARINE LIFE MOTION</em><em>CHARACTER PRESERVATION</em><em>MOTION</em><em>CAMERA</em><em>LIGHTING</em><em>INTEGRATION</em><em>CRITICAL</em><em>KEEP UNCHANGED</em><em>NEVER</em><em>QUALITY</em><em>NEGATIVE</em>
             </div>
-            <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
+            <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price">$7</span></a>
           </div>
         </div>
       </div>
@@ -556,8 +559,9 @@ Dress the woman from @Video1 in the dark navy-blue fitted mini dress shown in @I
         <li><b>Prompt Engine (PDF)</b>Файл для ChatGPT или Claude. Вы описываете правку своими словами — он пишет готовый промпт для Seedance 2.5.</li>
         <li><b>Примеры (PDF) — в комплекте</b>Реальные кадры «до → после» и то, как готовый запрос выглядит в Seedance 2.5. Только для чтения — никуда не загружается.</li>
       </ul>
-      <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price"><s>€7</s> €5</span></a>
-      <p class="final-note">Цена со скидкой на старте · 2 PDF на английском — сразу после оплаты на Gumroad</p>
+      <p class="final-pay">Окупается, если сэкономит хотя бы одну неудачную генерацию.</p>
+      <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price">$7</span></a>
+      <p class="final-note">2 PDF на английском — сразу после оплаты на Gumroad</p>
     </div>
 
     <section id="follow" style="border-top:0;padding-bottom:0">
