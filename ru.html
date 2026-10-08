@@ -233,6 +233,48 @@
     .skip-note{margin:14px 0 0!important;font-size:15px;padding:12px 14px;border-radius:12px;border:1px dashed #cfcdc6;background:#fff}
     .step > div{min-width:0}
     @media(max-width:600px){.blocks{grid-template-columns:1fr}.blocks li{grid-template-columns:24px 120px 1fr}.result{padding:14px}}
+
+    /* Reworked page (v3) */
+    .cards5{grid-template-columns:repeat(5,1fr)}
+    #need h2{margin-bottom:24px}
+    .fit{margin:18px 0 0;font-size:16px;color:var(--soft)}
+    .need{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .need-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .need-item h3{margin:0 0 6px;font-size:18px}
+    .need-item p{margin:0 0 10px;color:var(--soft);font-size:15px}
+    .need-item .cost{font-size:14px;color:var(--muted)}
+    .need-item.optional{border-style:dashed;background:transparent}
+    .btn.small{padding:10px 16px;font-size:14px}
+    .dict{margin-top:12px;padding:18px 20px;border-radius:var(--radius);background:var(--ink);color:#fff}
+    .dict > b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#bdbdbd;margin-bottom:10px}
+    .dict dl{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .dict dt{font-weight:700;margin-bottom:2px}
+    .dict dd{margin:0;color:#d6d6d6;font-size:14px}
+    .tip{margin-top:12px;padding:14px 16px;border-radius:12px;background:var(--keep-bg);border:1px solid #cfe6d8;font-size:15px;color:#1d3a29}
+    .tip p{margin:6px 0 0!important;color:#2f4a39!important;font-size:15px}
+    .variant{margin-top:16px;padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--bg)}
+    .variant.pe{background:#fff;border:1.5px solid var(--ink)}
+    .variant-h{font-size:18px;font-weight:700;margin-bottom:10px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;letter-spacing:-.01em}
+    .vtag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--ink);color:#fff}
+    .variant:not(.pe) .vtag{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .mark{background:#fff3c4;padding:0 4px;border-radius:4px}
+    .prompt.small{font-size:13px;padding:12px 16px}
+    .explain{margin-top:14px;font-size:15px;color:var(--soft)}
+    .explain ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px}
+    .explain code,.howto code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:0 5px}
+    .two-ref{margin:14px 0 8px!important}
+    .howto{margin:8px 0 14px;padding-left:20px;display:grid;gap:8px;color:var(--soft)}
+    .howto .files{margin:8px 0 2px}
+    .result-line{margin:14px 0 0!important}
+    .fix{margin-top:14px;padding:14px 16px;border-radius:12px;border:1px dashed #cfcdc6;font-size:15px}
+    .fix ul{margin:8px 0 0;padding-left:18px;display:grid;gap:4px;color:var(--soft)}
+    .ex-h{margin:30px 0 6px;font-size:22px;letter-spacing:-.01em}
+    .honest{margin:14px 0 0!important;font-size:14px;color:var(--muted)!important}
+    .honest a{color:var(--ink);font-weight:700}
+    .limit-note{margin:10px 0 0!important;font-size:14px;color:var(--muted)!important}
+    .final .get-h{font-size:16px;color:#fff;font-weight:600;margin:0 auto 12px}
+    @media(max-width:900px){.cards5{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:600px){.cards5{grid-template-columns:1fr 1fr}.cards5 .card:last-child{grid-column:span 2}.need,.dict dl{grid-template-columns:1fr}.variant{padding:14px}}
   </style>
 </head>
 <body>
@@ -240,13 +282,13 @@
   <header>
     <div class="brand">AI Test Tube</div>
     <div class="head-right">
-      <nav><a href="#steps">Инструкция</a><a href="#engine">Пример</a></nav>
+      <nav><a href="#steps">Инструкция</a><a href="#engine">Prompt Engine</a></nav>
       <span class="lang"><a href="index.html" hreflang="en">EN</a> · <span class="on">RU</span></span>
     </div>
   </header>
 
   <main>
-    <!-- 1. За 5 секунд: что это, какой результат и два пути -->
+    <!-- 1. Первый экран -->
     <div class="hero">
       <div class="hero-top">
         <div class="eyebrow">Редактируйте реальное видео с помощью AI</div>
@@ -258,13 +300,13 @@
       </div>
       <div class="hero-bottom">
         <p class="sub">
-          Prompt Engine — это PDF-инструкция для ChatGPT или Claude. Вы загружаете кадр из видео и фото-референс — и получаете готовый детальный промпт для Seedance 2.5. Как это сделать — пошагово в инструкции ниже.
+          Ниже — бесплатная пошаговая инструкция: её достаточно, чтобы сделать всё самим.
+          А если не хотите продумывать промпт вручную, его за вас напишет Prompt Engine.
         </p>
         <div class="buttons">
-          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price">$7</span></a>
-          <a class="btn secondary" href="#steps">Подробная инструкция ↓</a>
+          <a class="btn secondary" href="#need">Бесплатная инструкция ↓</a>
+          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Prompt Engine · <span class="price">$7</span></a>
         </div>
-        <p class="meta">3 шага до первой генерации · промпт на английском, пояснение — на языке вашего запроса</p>
       </div>
 
       <!-- Видео «до → после»: before-after.mp4, пока грузится — обложка before-after.jpg -->
@@ -278,146 +320,183 @@
       </figure>
     </div>
 
-    <!-- 2. Вся схема в одной строке -->
-    <section>
-      <h2>Как это устроено</h2>
-      <p class="section-lead">В Seedance 2.5 вы загружаете исходное видео, фото-референсы (одно или несколько — для одежды и места) и промпт. Всё решает промпт: в нём нужно чётко сказать, что поменять, а что оставить как есть. Prompt Engine собирает такой промпт за вас — или вы пишете его сами.</p>
-      <ol class="flow" aria-label="Схема работы">
-        <li><b>Видео + референс</b>Исходное видео и фото того, что хотите получить</li>
-        <li class="arr" aria-hidden="true">→</li>
-        <li class="engine"><b>ChatGPT / Claude + Prompt Engine</b>Готовый детальный промпт <span class="opt-flag">без Prompt Engine — пропустите</span></li>
-        <li class="arr" aria-hidden="true">→</li>
-        <li><b>Seedance 2.5</b>Загружаете исходное видео и фото-референсы, вставляете промпт</li>
-        <li class="arr" aria-hidden="true">→</li>
-        <li><b>Результат</b>Новое видео с тем же человеком</li>
-      </ol>
-    </section>
-
-    <!-- 3. Узнаёт ли человек свою задачу -->
-    <section>
-      <h2>Подходит, если вы…</h2>
-      <ul class="pains">
-        <li>снимаете видео дома, а хотите студийный визуал;</li>
-        <li>хотите сменить одежду без пересъёмки;</li>
-        <li>хотите перенести человека из комнаты на улицу, в отель или на пляж;</li>
-        <li>хотите изменить что-то в комнате — добавить или убрать вещи;</li>
-        <li>хотите добавить аксессуары на себя — очки, украшения, часы, сумку;</li>
-        <li>хотите поменять свет, погоду или время суток.</li>
-      </ul>
-      <div class="callout">
-        <p><strong>Каждая генерация стоит денег.</strong></p>
-        <p>Одна 10-секундная генерация в высоком качестве может стоить столько же, сколько сам Prompt Engine. Если он сэкономит хотя бы одну неудачную попытку — он уже окупился.</p>
-      </div>
-    </section>
-
-    <!-- 4. Что можно изменить -->
+    <!-- 2. Что можно изменить -->
     <section>
       <h2>Что можно изменить</h2>
-      <p class="section-lead">Можно менять одно или сразу несколько.</p>
-      <div class="cards">
+      <p class="section-lead">Одно или сразу несколько.</p>
+      <div class="cards cards5">
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V11"/><path d="M12 11l-8.6 6.2c-.7.5-.4 1.8.6 1.8h16c1 0 1.3-1.3.6-1.8L12 11z"/></svg></div>
           <h3>Одежду</h3>
-          <p>Возьмите одежду с фото-референса и «наденьте» её на человека из видео.</p>
+          <p>Например, «надеть» на человека платье с фото.</p>
         </div>
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 19L9 9.5l4.2 6.2L16 12l5.5 7z"/><circle cx="17" cy="6" r="2"/></svg></div>
-          <h3>Окружение</h3>
-          <p>Обычная комната превращается в студию, улицу, отель, пляж или любую другую сцену.</p>
+          <h3>Место</h3>
+          <p>Комната превращается в студию, улицу, отель, пляж.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="7" cy="14" r="3.5"/><circle cx="17" cy="14" r="3.5"/><path d="M10.5 14h3M3.6 13.2 5 8M20.4 13.2 19 8"/></svg></div>
+          <h3>Детали сцены</h3>
+          <p>Добавить или убрать вещи, надеть очки, украшения, часы, сумку.</p>
         </div>
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 4c.6 4.4 2.6 6.4 7 7-4.4.6-6.4 2.6-7 7-.6-4.4-2.6-6.4-7-7 4.4-.6 6.4-2.6 7-7z"/><path d="M19 3v4M17 5h4"/></svg></div>
-          <h3>Свет и детали</h3>
-          <p>Освещение, ветер, движение ткани, вода, листья — когда они нужны для реалистичной сцены.</p>
+          <h3>Свет и атмосферу</h3>
+          <p>Время суток, погоду, студийное освещение.</p>
         </div>
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></div>
           <h3>Камеру</h3>
-          <p>Ракурс, перспективу или движение камеры.</p>
+          <p>Ракурс или движение.</p>
           <span class="opt">Только если вы об этом попросите</span>
         </div>
       </div>
+      <p class="fit">Подходит, если вы снимаете дома, а хотите студийную картинку, или хотите сменить образ без пересъёмки.</p>
     </section>
 
-    <!-- 5. Главный принцип -->
+    <!-- 3. Что понадобится -->
+    <section id="need">
+      <h2>Что понадобится</h2>
+      <div class="need">
+        <div class="need-item">
+          <h3>Видео, которое хотите изменить</h3>
+          <p>От 4 до 30 секунд. Подойдёт и крупный план, и съёмка в полный рост — главное, чтобы человек был хорошо виден и не слишком далеко от камеры.</p>
+        </div>
+        <div class="need-item">
+          <h3>Фото-референс</h3>
+          <p>Фото одежды, места или общего стиля. Чем чётче фото, тем точнее результат. Одежда на нём должна быть видна целиком. Референсов может быть несколько.</p>
+        </div>
+        <div class="need-item">
+          <h3>Доступ к Seedance 2.5</h3>
+          <p>Это нейросеть, которая будет редактировать видео. Я работаю с ней на Segmind: там выгодная цена генераций. Нужна регистрация и пополненный баланс.</p>
+          <p class="cost">Каждый запуск платный. Ориентир: на Segmind 30 секунд видео в 720p стоят около $7, цены платформ могут меняться. Короткие ролики дешевле, поэтому первые пробы удобно делать на коротком видео.</p>
+          <a class="btn secondary small" href="https://www.segmind.com/models/seedance-2.5" target="_blank" rel="noopener">Открыть Seedance 2.5 на Segmind ↗</a>
+        </div>
+        <div class="need-item optional">
+          <h3>По желанию: ChatGPT или Claude + Prompt Engine</h3>
+          <p>Если хотите, чтобы промпт написала нейросеть. Хватит бесплатных версий. У бесплатного ChatGPT есть дневной лимит на загрузку файлов, обычно его хватает на одну задачу (3 файла). В бесплатном Claude лимиты другие, работать с файлами там удобнее.</p>
+        </div>
+      </div>
+      <div class="dict">
+        <b>Три слова, которые встретятся дальше</b>
+        <dl>
+          <div><dt>Промпт</dt><dd>текстовое задание для нейросети: что сделать с видео.</dd></div>
+          <div><dt>Референс</dt><dd>фото-образец: «вот такую одежду» или «вот такое место».</dd></div>
+          <div><dt>Генерация</dt><dd>один запуск нейросети. Одна генерация = одно новое видео.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 4. Главное правило -->
     <section>
-      <h2>Главный принцип: меняем только то, что вы попросили</h2>
-      <p class="section-lead">Хороший промпт делит задачу на две части и чётко объясняет Seedance, где граница. На этом построен Prompt Engine.</p>
-      <p class="example"><span>Например:</span> было обычное видео дома → хотите ощущение профессиональной студийной съёмки.</p>
+      <h2>Главное правило: меняем только то, что попросили</h2>
+      <p class="section-lead">Seedance не знает, что для вас важно. Если не сказать ему, что сохранить, он может изменить и лицо, и движения, и камеру. Поэтому в каждом промпте две части.</p>
       <div class="ck">
         <div class="ck-col change">
-          <h3>CHANGE — меняем</h3>
-          <p>То, что вы указали в задаче:</p>
+          <h3>МЕНЯЕМ</h3>
+          <p>То, что вы указали:</p>
           <ul class="chips">
-            <li>одежда</li><li>интерьер и фон</li><li>освещение</li><li>детали сцены</li><li>ракурс камеры — по запросу</li>
+            <li>одежда</li><li>место и фон</li><li>свет</li><li>детали сцены</li><li>ракурс камеры — только по запросу</li>
           </ul>
         </div>
         <div class="ck-col keep">
-          <h3>KEEP — сохраняем</h3>
-          <p>Всё, что вы не просили менять:</p>
+          <h3>СОХРАНЯЕМ</h3>
+          <p>Всё остальное:</p>
           <ul class="chips">
-            <li>лицо и внешность</li><li>волосы</li><li>тело и пропорции</li><li>руки</li><li>движения и жесты</li><li>мимика</li><li>композиция</li><li>камера и перспектива</li><li>тайминг видео</li>
+            <li>лицо</li><li>волосы</li><li>тело и пропорции</li><li>руки</li><li>движения и жесты</li><li>мимика</li><li>композиция</li><li>камера</li><li>тайминг видео</li>
           </ul>
         </div>
       </div>
-      <p class="ck-note">Камера по умолчанию остаётся прежней. Нужен другой ракурс или движение камеры — просто напишите об этом в промпте.</p>
+      <p class="ck-note">Камера по умолчанию остаётся прежней. Нужен другой ракурс — напишите об этом в промпте.</p>
     </section>
 
-    <!-- 6. Workflow: три шага -->
+    <!-- 5. Как сделать: 3 шага -->
     <section id="steps">
-      <h2>Workflow: 3 шага до первой генерации</h2>
-      <p class="section-lead">Если вы не используете Prompt Engine, пропустите шаг 2 и напишите промпт сами, сразу в Seedance. Но тогда все детали придётся продумать вручную — и генерация не всегда получится с первого раза.</p>
+      <h2>Как сделать: 3 шага</h2>
       <ol class="steps">
         <li class="step">
           <div class="num">01</div>
           <div>
-            <h3>Подготовьте видео и референс</h3>
-            <p>Исходное видео, которое хотите изменить, и фото того, что хотите получить: одежда, интерьер, новая локация или общий стиль. Референсов может быть несколько.</p>
-            <div class="important">
-              <b>Человек на референсе не заменит вашего.</b> Лицо, волосы и тело всегда берутся из исходного видео.
+            <h3>Подготовьте видео и фото-референс</h3>
+            <p>Выберите видео и найдите фото того, что хотите получить.</p>
+            <div class="tip">
+              <b>Референс можно не искать, а сгенерировать.</b>
+              <p>Сделайте скриншот кадра из видео и попросите ChatGPT Images или Nano Banana изменить на нём одежду, фон или и то и другое. Получившуюся картинку используйте как референс.</p>
+              <p>Такой референс работает особенно хорошо: поза, ракурс и композиция на нём уже совпадают с вашим видео. Если лицо на сгенерированной картинке получилось немного другим — не страшно: лицо Seedance всё равно возьмёт из исходного видео.</p>
             </div>
+            <div class="important">
+              <b>Человек с референса не должен заменить вашего.</b> Лицо, волосы и тело нужно взять из исходного видео, а с фото — только одежду или место. Об этом нужно прямо сказать в промпте: в шаблоне ниже и в Prompt Engine это уже прописано.
+            </div>
+            <p style="margin-top:12px"><b>Если референсов несколько,</b> решите заранее, какое фото за что отвечает. Например: первое — одежда, второе — место. Одно фото может отвечать и за одежду, и за место сразу, но тогда это нужно прямо написать в промпте.</p>
           </div>
         </li>
 
         <li class="step">
           <div class="num">02</div>
           <div>
-            <h3>Соберите промпт в ChatGPT или Claude <span class="skip">с Prompt Engine</span></h3>
-            <p class="skip-why">Этот шаг — для тех, у кого есть Prompt Engine. Если вы его не используете, пропустите шаг и переходите к шагу 3.</p>
-            <p>Сделайте скриншот кадра из видео, где хорошо видно человека и сцену. Он нужен только здесь: по нему Prompt Engine видит композицию.</p>
-            <p>Загрузите 3 файла по порядку:</p>
-            <ul class="files">
-              <li>Prompt Engine (PDF)</li>
-              <li>Скриншот из видео</li>
-              <li>Фото-референс</li>
-            </ul>
-            <p>И отправьте этот запрос, заменив текст в <span style="background:#fff3c4;padding:0 4px;border-radius:4px">[квадратных скобках]</span>:</p>
-            <div class="prompt" id="prompt-ru">Изучи и строго следуй прикреплённой инструкции Seedance 2.5. Создай готовый промпт.
-@Video1 — исходное видео; первое фото — скрин его исходного кадра.
-@Image1 — фото-референс, второе фото. Взять: <span class="fill">[одежду / окружение / одежду и окружение]</span>. Описание: <span class="fill">[девушка в пледе, в горах]</span>.
-Соблюдай формат и правила из инструкции.</div>
-            <div class="prompt-bar">
-              <small>Порядок важен: сначала скриншот, потом референс. PDF с примерами не загружайте — он только для чтения.</small>
-              <button class="copy" type="button" data-copy="prompt-ru">Скопировать запрос</button>
+            <h3>Напишите промпт — выберите вариант</h3>
+
+            <div class="variant">
+              <div class="variant-h"><span class="vtag">Вариант А</span> Сами, по простому шаблону</div>
+              <p>Скопируйте шаблон и замените текст в <span class="mark">[квадратных скобках]</span>. Пишите промпт на английском: так надёжнее. Если нужно, переведите свой текст в переводчике или попросите ChatGPT или Claude.</p>
+              <div class="prompt" id="tpl-a"><span class="h">@Video1</span> is the original video. Keep the person exactly the same: face, hair, body, hands, movements, facial expressions and timing.
+
+<span class="h">@Image1</span> is the reference for <span class="fill">[the outfit / the location / the outfit and the location]</span>. Do not copy the person from @Image1.
+
+Change only: <span class="fill">[her dress to the dress from @Image1]</span>.
+Details: <span class="fill">[dark blue fitted mini dress, sleeveless, high neckline]</span>.
+
+Keep everything else unchanged. Keep the camera angle and camera movement the same as in @Video1.
+Match the light on the person to the new scene. Realistic result, no distortions.</div>
+              <div class="prompt-bar">
+                <small>Шаблон для простых задач: одна вещь или одно место.</small>
+                <button class="copy" type="button" data-copy="tpl-a">Скопировать</button>
+              </div>
+              <div class="explain">
+                <b>Что здесь что</b>
+                <ul>
+                  <li><code>@Video1</code> и <code>@Image1</code> — так Seedance понимает, о каком файле речь. @Video1 — ваше видео, @Image1 — первое загруженное фото, @Image2 — второе.</li>
+                  <li><code>[the outfit / the location / the outfit and the location]</code> — выберите, что меняете: одежду, место или и то и другое сразу.</li>
+                  <li><code>Change only</code> — что поменять, одной фразой. Например: <em>Change only: her dress and the location — use both from @Image1.</em></li>
+                  <li><code>Details</code> — опишите конкретно: цвет, ткань, фасон или само место. Слова «красиво» и «кинематографично» нейросеть не понимает как задание.</li>
+                  <li>Остальные строки не меняйте: они защищают человека и камеру.</li>
+                </ul>
+              </div>
+              <p class="two-ref"><b>Если референса два,</b> замените вторую строку на две:</p>
+              <div class="prompt small"><span class="h">@Image1</span> is the reference for the outfit only.
+<span class="h">@Image2</span> is the reference for the location only.</div>
+              <p class="honest">Простой шаблон не гарантирует, что лицо, движения и камера сохранятся идеально: в сложных сценах многое зависит от деталей промпта. <a href="#engine">Почему так и что с этим делает Prompt Engine ↓</a></p>
             </div>
 
-            <div class="result">
-              <p class="result-h"><b>Что вы получите:</b> структурированный промпт на английском, собранный по 12 блокам — только тем, что нужны вашей задаче (в сложных сценах — с подразделами, как в примере ниже). И короткое пояснение на языке вашего запроса.</p>
-              <ol class="blocks">
-                <li><code>FILES &amp; ROLES</code><span>что берём из видео, что из референса</span></li>
-                <li><code>EDITING TASK</code><span>что именно меняем</span></li>
-                <li><code>OUTFIT</code><span>одежда: ткань, крой, цвет, детали</span></li>
-                <li><code>ENVIRONMENT</code><span>новое место по планам</span></li>
-                <li><code>NATURAL MOTION</code><span>ветер, ткань, вода, листья</span></li>
-                <li><code>LIGHTING</code><span>свет под новое место</span></li>
-                <li><code>CHARACTER</code><span>защита лица и тела</span></li>
-                <li><code>MOTION</code><span>движения и тайминг без изменений</span></li>
-                <li><code>CAMERA</code><span>камера — как в оригинале</span></li>
-                <li><code>INTEGRATION</code><span>человек «внутри» сцены, а не вклеен</span></li>
-                <li><code>CRITICAL</code><span>что менять, что сохранить, что запрещено</span></li>
-                <li><code>QUALITY</code><span>качество и защита от артефактов</span></li>
+            <div class="variant pe">
+              <div class="variant-h"><span class="vtag">Вариант Б</span> С Prompt Engine — промпт за вас напишет ChatGPT или Claude</div>
+              <p><b>Prompt Engine</b> — это файл, который вы отправляете в ChatGPT или Claude. Нейросеть читает его и пишет подробный промпт под ваше видео и ваш референс. Сами вы файл не читаете, поэтому то, что он на английском, неважно.</p>
+              <ol class="howto">
+                <li>Сделайте скриншот кадра из видео, где хорошо видно человека и сцену. По нему нейросеть увидит композицию.</li>
+                <li>Откройте новый чат и загрузите 3 файла в таком порядке:
+                  <ul class="files">
+                    <li>Prompt Engine (PDF)</li>
+                    <li>Фото-референс</li>
+                    <li>Скриншот кадра</li>
+                  </ul>
+                </li>
+                <li>Скопируйте запрос, замените текст в <span class="mark">[квадратных скобках]</span> и отправьте.</li>
               </ol>
-              <p class="skip-note"><b>Без Prompt Engine?</b> Пишите промпт сразу в Seedance — блоки выше подскажут, о чём не забыть.</p>
+              <div class="prompt" id="prompt-ru">Изучи и строго следуй прикреплённой инструкции Seedance 2.5. Создай готовый промпт.
+@Image1 — фото-референс, первое фото. Взять: <span class="fill">[одежду / окружение / одежду и окружение]</span>. Описание: <span class="fill">[девушка в пледе, в горах]</span>.
+@Video1 — исходное видео; второе фото — скрин его исходного кадра.
+Соблюдай формат и правила из инструкции.</div>
+              <div class="prompt-bar">
+                <small>В строке «Взять» укажите, что берёте с фото: одежду, окружение или одежду и окружение.</small>
+                <button class="copy" type="button" data-copy="prompt-ru">Скопировать запрос</button>
+              </div>
+              <p class="two-ref"><b>Если референса два,</b> загрузите их по порядку, а скриншот — последним. Средние строки запроса будут такими:</p>
+              <div class="prompt small">@Image1 — фото-референс, первое фото. Взять: только одежду. Описание: <span class="fill">[…]</span>.
+@Image2 — фото-референс, второе фото. Взять: только окружение. Описание: <span class="fill">[…]</span>.
+@Video1 — исходное видео; третье фото — скрин его исходного кадра.</div>
+              <p class="limit-note">С двумя референсами файлов будет четыре — в бесплатном ChatGPT лимита может не хватить, удобнее в Claude.</p>
+              <p class="result-line"><b>Что вы получите:</b> готовый промпт на английском для Seedance и короткое пояснение на русском — что и почему в нём написано.</p>
             </div>
           </div>
         </li>
@@ -425,49 +504,103 @@
         <li class="step">
           <div class="num">03</div>
           <div>
-            <h3>Перенесите промпт в Seedance 2.5</h3>
-            <p>Откройте платформу, где вы используете Seedance 2.5. Загрузите исходное видео и фото-референсы — одно или несколько, для одежды и места. Вставьте готовый промпт и запустите генерацию.</p>
+            <h3>Запустите генерацию в Seedance 2.5</h3>
+            <ol class="howto">
+              <li>Откройте Seedance 2.5 на Segmind (или на другой платформе, где он есть).</li>
+              <li>Загрузите исходное видео и фото-референсы в том же порядке, что указан в промпте.</li>
+              <li>Вставьте промпт и запустите генерацию.</li>
+            </ol>
+            <a class="btn secondary small" href="https://www.segmind.com/models/seedance-2.5" target="_blank" rel="noopener">Открыть Seedance 2.5 на Segmind ↗</a>
             <div class="important">
-              <b>PDF загружается только в ChatGPT или Claude.</b> В Seedance вы переносите уже готовый промпт — скриншот кадра туда тоже не нужен.
+              <b>В Seedance загружаются только видео и референсы.</b> Файл Prompt Engine и скриншот кадра туда не нужны.
+            </div>
+            <div class="fix">
+              <b>Если результат не тот</b>
+              <ul>
+                <li>поменялось лицо или движения — проверьте, есть ли в промпте строки о том, что сохранить;</li>
+                <li>одежда или место не похожи — опишите их подробнее в Details;</li>
+                <li>поменялось слишком много — меняйте за раз что-то одно: сначала одежду, потом место.</li>
+              </ul>
             </div>
           </div>
         </li>
       </ol>
     </section>
 
-    <!-- 7. Что добавляет Prompt Engine -->
+    <!-- 6. Частые ошибки -->
+    <section>
+      <h2>Частые ошибки</h2>
+      <div class="mistakes">
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Писать «сделай как на фото»</h3>
+          <p>Модель не поймёт, что именно взять. Пишите роль: <code>@Image1 is the reference for the outfit</code>.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Не писать, что сохранить</h3>
+          <p>Тогда Seedance может изменить лицо, движения и камеру.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Описывать общими словами</h3>
+          <p>«Красиво» — не задание. Описывайте цвет, ткань, место, свет.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Загружать Prompt Engine или скриншот в Seedance</h3>
+          <p>Они нужны только в ChatGPT или Claude.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Почему простого шаблона иногда мало -->
     <section id="engine">
-      <h2>Можно и самому. Но вот что легко упустить</h2>
-      <p class="section-lead">Результат в Seedance зависит от мелочей. Prompt Engine смотрит на ваш кадр и референс и прописывает их за вас.</p>
+      <h2>Почему простого шаблона иногда мало</h2>
+      <p class="section-lead">Шаблон выше даёт рабочий результат в простых задачах. Но в сложной сцене — например, с двумя людьми, сменой места и движением воды — результат зависит от деталей, которые легко упустить.</p>
       <div class="vs">
         <div class="vs-col">
-          <h3>Пишете сами</h3>
-          <p>Всё это нужно продумать и описать самостоятельно:</p>
+          <h3>Если пишете сами</h3>
+          <p>Нужно продумать:</p>
           <ul>
-            <li>одежду — ткань, крой, цвет, фактуру, детали;</li>
-            <li>новое место — передний, средний и дальний план;</li>
-            <li>свет на человеке и на фоне, чтобы он совпадал;</li>
-            <li>как ткань ведёт себя в движении и на ветру;</li>
-            <li>движение в сцене: вода, листья, рыбы, птицы;</li>
-            <li>длинный список запретов против артефактов.</li>
+            <li>одежду: ткань, крой, цвет, фактуру;</li>
+            <li>новое место: что на переднем, среднем и дальнем плане;</li>
+            <li>свет на человеке и на фоне, чтобы они совпадали;</li>
+            <li>как ткань двигается и реагирует на ветер;</li>
+            <li>движение в сцене: вода, листья, птицы;</li>
+            <li>что запретить, чтобы не появились искажения.</li>
           </ul>
         </div>
         <div class="vs-col pe">
           <h3>С Prompt Engine</h3>
-          <p>Вы описываете задачу одной строкой — остальное он делает сам:</p>
+          <p>Делает это за вас:</p>
           <ul>
-            <li>разбирает ваш референс и описывает одежду и место конкретно;</li>
+            <li>смотрит на ваш кадр и референс и описывает одежду и место конкретно;</li>
             <li>распределяет роли файлов, чтобы Seedance их не перепутал;</li>
-            <li>согласует свет, тени и отражения с новой локацией;</li>
-            <li>добавляет физику ткани и естественное движение в сцене;</li>
-            <li>защищает лицо, тело, движения и камеру от изменений;</li>
-            <li>следует 21 разделу правил, проверяет промпт и добавляет блок качества.</li>
+            <li>согласует свет и тени с новым местом;</li>
+            <li>добавляет естественное движение ткани и сцены;</li>
+            <li>защищает лицо, тело, движения и камеру;</li>
+            <li>проверяет, что ничего не забыто.</li>
           </ul>
         </div>
       </div>
 
-      <h3 style="margin:0 0 6px;font-size:22px;letter-spacing:-.01em">Настоящий пример: промпт от Prompt Engine</h3>
-      <p class="eg" style="margin:0 0 16px">В Seedance загрузили исходное видео и один фото-референс — сразу для одежды и места. Вот промпт, который к ним составил Prompt Engine.</p>
+      <div class="result">
+        <p class="result-h"><b>Из чего состоит промпт от Prompt Engine.</b> Только те блоки, которые нужны вашей задаче:</p>
+        <ol class="blocks">
+          <li><code>FILES &amp; ROLES</code><span>что берём из видео, что из референса</span></li>
+          <li><code>EDITING TASK</code><span>что именно меняем</span></li>
+          <li><code>OUTFIT</code><span>одежда: ткань, крой, цвет, детали</span></li>
+          <li><code>ENVIRONMENT</code><span>новое место по планам</span></li>
+          <li><code>NATURAL MOTION</code><span>ветер, ткань, вода, листья</span></li>
+          <li><code>LIGHTING</code><span>свет под новое место</span></li>
+          <li><code>CHARACTER</code><span>защита лица и тела</span></li>
+          <li><code>MOTION</code><span>движения и тайминг без изменений</span></li>
+          <li><code>CAMERA</code><span>камера как в оригинале</span></li>
+          <li><code>INTEGRATION</code><span>человек «внутри» сцены, а не вклеен</span></li>
+          <li><code>CRITICAL</code><span>что менять, что сохранить, что запрещено</span></li>
+          <li><code>QUALITY</code><span>качество и защита от искажений</span></li>
+        </ol>
+      </div>
+
+      <h3 class="ex-h">Настоящий пример</h3>
+      <p class="eg" style="margin:0 0 16px">В Seedance загрузили исходное видео и одно фото — сразу для одежды и места. Вот начало промпта, который написал Prompt Engine.</p>
       <div class="example-wrap">
         <figure class="example-shot">
           <img src="example-restaurant.jpg" width="720" height="720" loading="lazy" alt="Слева исходное видео: пара в комнате. Справа результат: та же пара в новой одежде в подводном ресторане">
@@ -504,64 +637,17 @@ Dress the woman from @Video1 in the dark navy-blue fitted mini dress shown in @I
       </div>
     </section>
 
-    <!-- 8. Несколько референсов -->
-    <section>
-      <h2>Если референсов несколько</h2>
-      <p class="section-lead">Загружайте фото по порядку и укажите роль каждого — так модель не перепутает, что откуда брать.</p>
-      <ul class="map">
-        <li><code>@Video1</code><span>исходное видео и человек (первое фото — скрин его кадра)</span></li>
-        <li><code>@Image1</code><span>второе фото — только одежда</span></li>
-        <li><code>@Image2</code><span>третье фото — только окружение</span></li>
-      </ul>
-      <p class="eg">Один референс сразу для одежды и окружения — тоже можно. Просто напишите это явно: Prompt Engine разделит одежду и место внутри одного изображения.</p>
-    </section>
-
-    <!-- 9. Частые ошибки -->
-    <section>
-      <h2>Частые ошибки</h2>
-      <div class="mistakes">
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Писать «сделай как на фото»</h3>
-          <p>Модель не поймёт, что брать. Пишите роль: <code>@Image1 — референс для одежды</code> или <code>@Image1 — референс для окружения</code>.</p>
-        </div>
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Не говорить, что важно сохранить</h3>
-          <p>Если не написать, что лицо, движения и камера остаются прежними, Seedance может поменять и их.</p>
-        </div>
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Описывать общими словами</h3>
-          <p>«Красиво», «кинематографично» — не инструкция. Описывайте цвет, ткань, место, свет.</p>
-        </div>
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Загружать PDF или скриншот в Seedance</h3>
-          <p>Prompt Engine и скриншот кадра нужны только в ChatGPT или Claude. В Seedance — видео, референсы и готовый промпт.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. Где запускать -->
-    <section>
-      <h2>Где использовать Seedance 2.5</h2>
-      <div class="platform">
-        <p>
-          Я сама работаю с Seedance 2.5 на Segmind — в том числе из-за выгодной стоимости генераций.
-          Но инструкция и Prompt Engine не привязаны к платформе: они подходят для Seedance 2.5 где угодно.
-        </p>
-        <a class="btn secondary" href="https://www.segmind.com/models/seedance-2.5" target="_blank" rel="noopener">Seedance 2.5 на Segmind ↗</a>
-      </div>
-    </section>
-
-    <!-- 11. Финальный призыв -->
+    <!-- 8. Финальный призыв -->
     <div class="final">
-      <h2>Хватит тратить генерации на пробы и ошибки</h2>
-      <p>Workflow вы теперь знаете. Prompt Engine сэкономит время и генерации: опишите задачу — он скажет Seedance, что менять и что сохранить. При покупке вы получаете два файла:</p>
+      <h2>Хватит тратить генерации на пробы</h2>
+      <p>Одна генерация 30 секунд в 720p на Segmind стоит около $7 — столько же, сколько Prompt Engine. Если он сэкономит хотя бы одну неудачную попытку, он уже окупился.</p>
+      <p class="get-h">При покупке вы получаете два файла:</p>
       <ul class="get">
-        <li><b>Prompt Engine (PDF)</b>Файл для ChatGPT или Claude. Вы описываете правку своими словами — он пишет готовый промпт для Seedance 2.5.</li>
-        <li><b>Примеры (PDF) — в комплекте</b>Реальные кадры «до → после» и то, как готовый запрос выглядит в Seedance 2.5. Только для чтения — никуда не загружается.</li>
+        <li><b>Prompt Engine (PDF)</b>Загружаете в ChatGPT или Claude — он пишет готовый промпт для Seedance 2.5.</li>
+        <li><b>Примеры (PDF)</b>Реальные кадры «до → после» и как готовый запрос выглядит в Seedance. Только для чтения, никуда не загружается.</li>
       </ul>
-      <p class="final-pay">Окупается, если сэкономит хотя бы одну неудачную генерацию.</p>
       <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Получить Prompt Engine · <span class="price">$7</span></a>
-      <p class="final-note">2 PDF на английском — сразу после оплаты на Gumroad</p>
+      <p class="final-note">2 PDF на английском, сразу после оплаты на Gumroad. Prompt Engine работает в ChatGPT или Claude, а промпт, который он пишет, подходит для Seedance 2.5 на любой платформе.</p>
     </div>
 
     <section id="follow" style="border-top:0;padding-bottom:0">

@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seedance 2.5 Prompt Engine — Swap the Outfit or the Background, Keep the Person</title>
-  <meta name="description" content="A step-by-step guide to Seedance 2.5 video edits: swap the outfit or the location in footage you already shot while keeping the face, the movement and the camera. Plus the Prompt Engine for ChatGPT or Claude.">
+  <meta name="description" content="A free step-by-step guide to Seedance 2.5 video edits: swap the outfit or the location in footage you already shot while keeping the face, the movement and the camera. Plus the Prompt Engine for ChatGPT or Claude.">
   <meta property="og:title" content="Edit Your Real Footage with AI. Swap the Outfit or the Background. Keep the Person.">
-  <meta property="og:description" content="New outfit, location and lighting — the face, the movement and the camera stay from your original footage. The full workflow in 3 steps.">
+  <meta property="og:description" content="New outfit, location and lighting — the face, the movement and the camera stay from your original footage. A free guide in 3 steps.">
   <link rel="alternate" hreflang="en" href="https://ai-edit-lab.pages.dev/">
   <link rel="alternate" hreflang="ru" href="https://ai-edit-lab.pages.dev/ru.html">
   <link rel="alternate" hreflang="x-default" href="https://ai-edit-lab.pages.dev/">
@@ -233,6 +233,48 @@
     .skip-note{margin:14px 0 0!important;font-size:15px;padding:12px 14px;border-radius:12px;border:1px dashed #cfcdc6;background:#fff}
     .step > div{min-width:0}
     @media(max-width:600px){.blocks{grid-template-columns:1fr}.blocks li{grid-template-columns:24px 120px 1fr}.result{padding:14px}}
+
+    /* Reworked page (v3) */
+    .cards5{grid-template-columns:repeat(5,1fr)}
+    #need h2{margin-bottom:24px}
+    .fit{margin:18px 0 0;font-size:16px;color:var(--soft)}
+    .need{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .need-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .need-item h3{margin:0 0 6px;font-size:18px}
+    .need-item p{margin:0 0 10px;color:var(--soft);font-size:15px}
+    .need-item .cost{font-size:14px;color:var(--muted)}
+    .need-item.optional{border-style:dashed;background:transparent}
+    .btn.small{padding:10px 16px;font-size:14px}
+    .dict{margin-top:12px;padding:18px 20px;border-radius:var(--radius);background:var(--ink);color:#fff}
+    .dict > b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#bdbdbd;margin-bottom:10px}
+    .dict dl{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .dict dt{font-weight:700;margin-bottom:2px}
+    .dict dd{margin:0;color:#d6d6d6;font-size:14px}
+    .tip{margin-top:12px;padding:14px 16px;border-radius:12px;background:var(--keep-bg);border:1px solid #cfe6d8;font-size:15px;color:#1d3a29}
+    .tip p{margin:6px 0 0!important;color:#2f4a39!important;font-size:15px}
+    .variant{margin-top:16px;padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--bg)}
+    .variant.pe{background:#fff;border:1.5px solid var(--ink)}
+    .variant-h{font-size:18px;font-weight:700;margin-bottom:10px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;letter-spacing:-.01em}
+    .vtag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--ink);color:#fff}
+    .variant:not(.pe) .vtag{background:#fff;color:var(--ink);border:1px solid var(--line)}
+    .mark{background:#fff3c4;padding:0 4px;border-radius:4px}
+    .prompt.small{font-size:13px;padding:12px 16px}
+    .explain{margin-top:14px;font-size:15px;color:var(--soft)}
+    .explain ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px}
+    .explain code,.howto code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:0 5px}
+    .two-ref{margin:14px 0 8px!important}
+    .howto{margin:8px 0 14px;padding-left:20px;display:grid;gap:8px;color:var(--soft)}
+    .howto .files{margin:8px 0 2px}
+    .result-line{margin:14px 0 0!important}
+    .fix{margin-top:14px;padding:14px 16px;border-radius:12px;border:1px dashed #cfcdc6;font-size:15px}
+    .fix ul{margin:8px 0 0;padding-left:18px;display:grid;gap:4px;color:var(--soft)}
+    .ex-h{margin:30px 0 6px;font-size:22px;letter-spacing:-.01em}
+    .honest{margin:14px 0 0!important;font-size:14px;color:var(--muted)!important}
+    .honest a{color:var(--ink);font-weight:700}
+    .limit-note{margin:10px 0 0!important;font-size:14px;color:var(--muted)!important}
+    .final .get-h{font-size:16px;color:#fff;font-weight:600;margin:0 auto 12px}
+    @media(max-width:900px){.cards5{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:600px){.cards5{grid-template-columns:1fr 1fr}.cards5 .card:last-child{grid-column:span 2}.need,.dict dl{grid-template-columns:1fr}.variant{padding:14px}}
   </style>
 </head>
 <body>
@@ -240,13 +282,13 @@
   <header>
     <div class="brand">AI Test Tube</div>
     <div class="head-right">
-      <nav><a href="#steps">Guide</a><a href="#engine">Example</a></nav>
+      <nav><a href="#steps">Guide</a><a href="#engine">Prompt Engine</a></nav>
       <span class="lang"><span class="on">EN</span> · <a href="ru.html" hreflang="ru">RU</a></span>
     </div>
   </header>
 
   <main>
-    <!-- 1. The first five seconds: what it is and what you get -->
+    <!-- 1. First screen -->
     <div class="hero">
       <div class="hero-top">
         <div class="eyebrow">Edit your real footage with AI</div>
@@ -258,13 +300,13 @@
       </div>
       <div class="hero-bottom">
         <p class="sub">
-          The Prompt Engine is a PDF instruction file for ChatGPT or Claude. Upload a frame from your video and a reference photo, and you get a ready-to-use, detailed Seedance 2.5 prompt. The step-by-step guide is below.
+          Below is a free step-by-step guide — it's all you need to do this yourself.
+          And if you'd rather not work out the prompt by hand, the Prompt Engine will write it for you.
         </p>
         <div class="buttons">
-          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price">$7</span></a>
-          <a class="btn secondary" href="#steps">Step-by-step guide ↓</a>
+          <a class="btn secondary" href="#need">Free guide ↓</a>
+          <a class="btn primary" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Prompt Engine · <span class="price">$7</span></a>
         </div>
-        <p class="meta">3 steps to your first generation · the prompt comes out in English, the breakdown in the language you write in</p>
       </div>
 
       <!-- Before/after clip: before-after.mp4, with before-after.jpg shown while it loads -->
@@ -278,146 +320,183 @@
       </figure>
     </div>
 
-    <!-- 2. The whole workflow in one line -->
-    <section>
-      <h2>How it works</h2>
-      <p class="section-lead">In Seedance 2.5 you upload your original video, your reference photos (one or more — for the outfit and the location) and a prompt. The prompt is what makes or breaks it: it has to tell Seedance exactly what to change and what to leave alone. The Prompt Engine writes that prompt for you — or you write it yourself.</p>
-      <ol class="flow" aria-label="Workflow">
-        <li><b>Video + reference</b>Your original video and a photo of what you want</li>
-        <li class="arr" aria-hidden="true">→</li>
-        <li class="engine"><b>ChatGPT / Claude + Prompt Engine</b>A ready-to-use, detailed prompt <span class="opt-flag">No Prompt Engine? Skip this</span></li>
-        <li class="arr" aria-hidden="true">→</li>
-        <li><b>Seedance 2.5</b>Upload your original video and reference photos, paste in the prompt</li>
-        <li class="arr" aria-hidden="true">→</li>
-        <li><b>Result</b>A new video, same person</li>
-      </ol>
-    </section>
-
-    <!-- 3. Does the visitor recognize their problem -->
-    <section>
-      <h2>This is for you if you want to…</h2>
-      <ul class="pains">
-        <li>film at home but get a studio look;</li>
-        <li>try a different outfit without reshooting;</li>
-        <li>take a video shot in your room and set it on a street, in a hotel or on a beach;</li>
-        <li>change something in the room — add or remove things;</li>
-        <li>add accessories — glasses, jewelry, a watch, a bag;</li>
-        <li>change the lighting, the weather or the time of day.</li>
-      </ul>
-      <div class="callout">
-        <p><strong>Every generation costs money.</strong></p>
-        <p>A single 10-second, high-quality generation can cost as much as the Prompt Engine itself. If it saves you even one failed attempt, it has already paid for itself.</p>
-      </div>
-    </section>
-
-    <!-- 4. What you can change -->
+    <!-- 2. What you can change -->
     <section>
       <h2>What you can change</h2>
       <p class="section-lead">One thing, or several at once.</p>
-      <div class="cards">
+      <div class="cards cards5">
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 6.5a2 2 0 1 1 3 1.7c-.6.4-1 .9-1 1.6V11"/><path d="M12 11l-8.6 6.2c-.7.5-.4 1.8.6 1.8h16c1 0 1.3-1.3.6-1.8L12 11z"/></svg></div>
-          <h3>Outfit</h3>
-          <p>Take the outfit from a reference photo and put it on the person in your video.</p>
+          <h3>The outfit</h3>
+          <p>For example, put the dress from a photo on the person in your video.</p>
         </div>
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 19L9 9.5l4.2 6.2L16 12l5.5 7z"/><circle cx="17" cy="6" r="2"/></svg></div>
-          <h3>Background</h3>
-          <p>Turn an ordinary room into a studio, a street, a hotel, a beach — any scene you want.</p>
+          <h3>The location</h3>
+          <p>Your room becomes a studio, a street, a hotel, a beach.</p>
+        </div>
+        <div class="card">
+          <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="7" cy="14" r="3.5"/><circle cx="17" cy="14" r="3.5"/><path d="M10.5 14h3M3.6 13.2 5 8M20.4 13.2 19 8"/></svg></div>
+          <h3>Scene details</h3>
+          <p>Add or remove things; add glasses, jewelry, a watch, a bag.</p>
         </div>
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 4c.6 4.4 2.6 6.4 7 7-4.4.6-6.4 2.6-7 7-.6-4.4-2.6-6.4-7-7 4.4-.6 6.4-2.6 7-7z"/><path d="M19 3v4M17 5h4"/></svg></div>
-          <h3>Lighting &amp; details</h3>
-          <p>Light, wind, moving fabric, water, leaves — whenever the scene needs them to look real.</p>
+          <h3>Light &amp; mood</h3>
+          <p>Time of day, weather, studio lighting.</p>
         </div>
         <div class="card">
           <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2"/><path d="M15.5 10.5l6-3.5v10l-6-3.5"/></svg></div>
-          <h3>Camera</h3>
-          <p>The angle, the perspective or the camera movement.</p>
+          <h3>The camera</h3>
+          <p>The angle or the camera movement.</p>
           <span class="opt">Only if you ask for it</span>
         </div>
       </div>
+      <p class="fit">It's for you if you film at home but want a studio look, or want a new look without reshooting.</p>
     </section>
 
-    <!-- 5. The core idea -->
+    <!-- 3. What you'll need -->
+    <section id="need">
+      <h2>What you'll need</h2>
+      <div class="need">
+        <div class="need-item">
+          <h3>The video you want to edit</h3>
+          <p>4 to 30 seconds long. Close-ups and full-body shots both work — the person just needs to be clearly visible and not too far from the camera.</p>
+        </div>
+        <div class="need-item">
+          <h3>A reference photo</h3>
+          <p>A photo of the outfit, the location or the overall look. The sharper the photo, the more accurate the result. The outfit should be fully visible. You can use more than one reference.</p>
+        </div>
+        <div class="need-item">
+          <h3>Access to Seedance 2.5</h3>
+          <p>This is the AI model that edits the video. I use it on Segmind, where generations are reasonably priced. You'll need an account and some credit on your balance.</p>
+          <p class="cost">Every run costs money. As a rough guide, 30 seconds of 720p video on Segmind costs about $7; platform prices can change. Short clips cost less, so it's easiest to do your first tests on a short video.</p>
+          <a class="btn secondary small" href="https://www.segmind.com/models/seedance-2.5" target="_blank" rel="noopener">Open Seedance 2.5 on Segmind ↗</a>
+        </div>
+        <div class="need-item optional">
+          <h3>Optional: ChatGPT or Claude + the Prompt Engine</h3>
+          <p>If you want the AI to write the prompt for you. The free versions are enough. Free ChatGPT has a daily file-upload limit that usually covers one task (3 files). Free Claude has different limits and is easier to work with when it comes to files.</p>
+        </div>
+      </div>
+      <div class="dict">
+        <b>Three words you'll see below</b>
+        <dl>
+          <div><dt>Prompt</dt><dd>a text instruction for the AI: what to do with the video.</dd></div>
+          <div><dt>Reference</dt><dd>an example photo: “this outfit” or “this place.”</dd></div>
+          <div><dt>Generation</dt><dd>one run of the AI. One generation = one new video.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 4. The main rule -->
     <section>
-      <h2>The core idea: change only what you asked for</h2>
-      <p class="section-lead">A good prompt splits the job in two and tells Seedance exactly where the line is. That's what the Prompt Engine is built on.</p>
-      <p class="example"><span>For example:</span> you have a regular video shot at home → you want it to feel like a professional studio shoot.</p>
+      <h2>The main rule: change only what you asked for</h2>
+      <p class="section-lead">Seedance doesn't know what matters to you. If you don't tell it what to keep, it may change the face, the movement and the camera too. That's why every prompt has two parts.</p>
       <div class="ck">
         <div class="ck-col change">
           <h3>CHANGE</h3>
           <p>Whatever you asked for:</p>
           <ul class="chips">
-            <li>outfit</li><li>interior &amp; background</li><li>lighting</li><li>scene details</li><li>camera angle — on request</li>
+            <li>outfit</li><li>location &amp; background</li><li>lighting</li><li>scene details</li><li>camera angle — only on request</li>
           </ul>
         </div>
         <div class="ck-col keep">
           <h3>KEEP</h3>
-          <p>Everything you didn't ask to change:</p>
+          <p>Everything else:</p>
           <ul class="chips">
-            <li>face &amp; identity</li><li>hair</li><li>body &amp; proportions</li><li>hands</li><li>movement &amp; gestures</li><li>facial expressions</li><li>composition</li><li>camera &amp; perspective</li><li>timing</li>
+            <li>face</li><li>hair</li><li>body &amp; proportions</li><li>hands</li><li>movement &amp; gestures</li><li>facial expressions</li><li>composition</li><li>camera</li><li>timing</li>
           </ul>
         </div>
       </div>
-      <p class="ck-note">By default, the camera stays exactly as it was. Want a different angle or camera move? Just say so in the prompt.</p>
+      <p class="ck-note">By default, the camera stays as it was. Want a different angle? Say so in the prompt.</p>
     </section>
 
-    <!-- 6. Workflow: three steps -->
+    <!-- 5. How to do it: 3 steps -->
     <section id="steps">
-      <h2>The workflow: 3 steps to your first generation</h2>
-      <p class="section-lead">Not using the Prompt Engine? Skip step 2 and write the prompt yourself, straight in Seedance. Just know that every detail is then on you — and the first generation won't always land.</p>
+      <h2>How to do it: 3 steps</h2>
       <ol class="steps">
         <li class="step">
           <div class="num">01</div>
           <div>
-            <h3>Get your video and reference ready</h3>
-            <p>The original video you want to edit, plus a photo of what you want: the outfit, the interior, a new location or an overall look. You can use more than one reference.</p>
-            <div class="important">
-              <b>The person in the reference won't replace yours.</b> The face, hair and body always come from your original video.
+            <h3>Get your video and reference photo ready</h3>
+            <p>Pick a video and find a photo of what you want to get.</p>
+            <div class="tip">
+              <b>You don't have to find a reference — you can generate one.</b>
+              <p>Take a screenshot of a frame from your video and ask ChatGPT Images or Nano Banana to change the outfit, the background, or both. Use the resulting image as your reference.</p>
+              <p>A reference like this works especially well: the pose, angle and composition already match your video. If the face on the generated image comes out a little different, that's fine — Seedance takes the face from your original video anyway.</p>
             </div>
+            <div class="important">
+              <b>The person in the reference shouldn't replace yours.</b> The face, hair and body should come from your original video, and only the outfit or the location from the photo. You have to say this explicitly in the prompt — the template below and the Prompt Engine already do.
+            </div>
+            <p style="margin-top:12px"><b>Using more than one reference?</b> Decide in advance which photo does what. For example: the first one is the outfit, the second one is the location. One photo can cover both the outfit and the location, but then you have to say so explicitly in the prompt.</p>
           </div>
         </li>
 
         <li class="step">
           <div class="num">02</div>
           <div>
-            <h3>Build the prompt in ChatGPT or Claude <span class="skip">with the Prompt Engine</span></h3>
-            <p class="skip-why">This step is for Prompt Engine owners. If you're not using it, skip ahead to step 3.</p>
-            <p>Take a screenshot of a frame from your video where the person and the scene are clearly visible. You only need it here: it shows the Prompt Engine the composition.</p>
-            <p>Upload 3 files, in this order:</p>
-            <ul class="files">
-              <li>Prompt Engine (PDF)</li>
-              <li>Video screenshot</li>
-              <li>Reference photo</li>
-            </ul>
-            <p>Then send this request, replacing the text in <span style="background:#fff3c4;padding:0 4px;border-radius:4px">[square brackets]</span>:</p>
-            <div class="prompt" id="prompt-en">Read the attached Seedance 2.5 instructions and follow them exactly. Write a ready-to-use prompt.
-@Video1 — the source video; the first image is a screenshot of one of its frames.
-@Image1 — the reference photo, the second image. Use it for: <span class="fill">[the outfit / the background / both]</span>. What it shows: <span class="fill">[a woman wrapped in a blanket, in the mountains]</span>.
-Follow the format and rules in the instructions.</div>
-            <div class="prompt-bar">
-              <small>Order matters: screenshot first, then the reference. Don't upload the examples PDF — it's for reading only.</small>
-              <button class="copy" type="button" data-copy="prompt-en">Copy request</button>
+            <h3>Write the prompt — pick an option</h3>
+
+            <div class="variant">
+              <div class="variant-h"><span class="vtag">Option A</span> Yourself, with a simple template</div>
+              <p>Copy the template and replace the text in <span class="mark">[square brackets]</span>. Write the prompt in English — it's more reliable.</p>
+              <div class="prompt" id="tpl-a"><span class="h">@Video1</span> is the original video. Keep the person exactly the same: face, hair, body, hands, movements, facial expressions and timing.
+
+<span class="h">@Image1</span> is the reference for <span class="fill">[the outfit / the location / the outfit and the location]</span>. Do not copy the person from @Image1.
+
+Change only: <span class="fill">[her dress to the dress from @Image1]</span>.
+Details: <span class="fill">[dark blue fitted mini dress, sleeveless, high neckline]</span>.
+
+Keep everything else unchanged. Keep the camera angle and camera movement the same as in @Video1.
+Match the light on the person to the new scene. Realistic result, no distortions.</div>
+              <div class="prompt-bar">
+                <small>A template for simple edits: one item or one location.</small>
+                <button class="copy" type="button" data-copy="tpl-a">Copy</button>
+              </div>
+              <div class="explain">
+                <b>What's what</b>
+                <ul>
+                  <li><code>@Video1</code> and <code>@Image1</code> — this is how Seedance knows which file you mean. @Video1 is your video, @Image1 is the first photo you upload, @Image2 the second.</li>
+                  <li><code>[the outfit / the location / the outfit and the location]</code> — pick what you're changing: the outfit, the location, or both.</li>
+                  <li><code>Change only</code> — what to change, in one sentence. For example: <em>Change only: her dress and the location — use both from @Image1.</em></li>
+                  <li><code>Details</code> — be specific: color, fabric, cut, or the place itself. The AI doesn't treat words like “beautiful” or “cinematic” as instructions.</li>
+                  <li>Leave the other lines as they are: they protect the person and the camera.</li>
+                </ul>
+              </div>
+              <p class="two-ref"><b>Two references?</b> Replace the second line with these two:</p>
+              <div class="prompt small"><span class="h">@Image1</span> is the reference for the outfit only.
+<span class="h">@Image2</span> is the reference for the location only.</div>
+              <p class="honest">A simple template doesn't guarantee that the face, the movement and the camera stay perfectly intact: in complex scenes, a lot depends on the details of the prompt. <a href="#engine">Why, and what the Prompt Engine does about it ↓</a></p>
             </div>
 
-            <div class="result">
-              <p class="result-h"><b>What you get:</b> a structured prompt in English, built from 12 blocks — only the ones your edit needs (with sub-sections for more complex scenes, like the example below). Plus a short breakdown in the language you wrote your request in.</p>
-              <ol class="blocks">
-                <li><code>FILES &amp; ROLES</code><span>what comes from the video, what from the reference</span></li>
-                <li><code>EDITING TASK</code><span>exactly what changes</span></li>
-                <li><code>OUTFIT</code><span>the clothes: fabric, cut, color, details</span></li>
-                <li><code>ENVIRONMENT</code><span>the new place, layer by layer</span></li>
-                <li><code>NATURAL MOTION</code><span>wind, fabric, water, leaves</span></li>
-                <li><code>LIGHTING</code><span>light that fits the new place</span></li>
-                <li><code>CHARACTER</code><span>protects the face and body</span></li>
-                <li><code>MOTION</code><span>movement and timing stay the same</span></li>
-                <li><code>CAMERA</code><span>the camera, as in the original</span></li>
-                <li><code>INTEGRATION</code><span>the person sits in the scene, not pasted on</span></li>
-                <li><code>CRITICAL</code><span>what changes, what stays, what's off-limits</span></li>
-                <li><code>QUALITY</code><span>quality and protection from artifacts</span></li>
+            <div class="variant pe">
+              <div class="variant-h"><span class="vtag">Option B</span> With the Prompt Engine — ChatGPT or Claude writes the prompt for you</div>
+              <p><b>The Prompt Engine</b> is a file you send to ChatGPT or Claude. The AI reads it and writes a detailed prompt for your video and your reference. You never have to read the file yourself.</p>
+              <ol class="howto">
+                <li>Take a screenshot of a frame from your video where the person and the scene are clearly visible. It shows the AI the composition.</li>
+                <li>Open a new chat and upload 3 files, in this order:
+                  <ul class="files">
+                    <li>Prompt Engine (PDF)</li>
+                    <li>Reference photo</li>
+                    <li>Video screenshot</li>
+                  </ul>
+                </li>
+                <li>Copy the request, replace the text in <span class="mark">[square brackets]</span> and send it.</li>
               </ol>
-              <p class="skip-note"><b>No Prompt Engine?</b> Write your prompt straight in Seedance — the blocks above are a checklist of what not to forget.</p>
+              <div class="prompt" id="prompt-en">Read the attached Seedance 2.5 instructions and follow them exactly. Write a ready-to-use prompt.
+@Image1 — the reference photo, the first image. Use it for: <span class="fill">[the outfit / the background / both]</span>. What it shows: <span class="fill">[a woman wrapped in a blanket, in the mountains]</span>.
+@Video1 — the source video; the second image is a screenshot of one of its frames.
+Follow the format and rules in the instructions.</div>
+              <div class="prompt-bar">
+                <small>In “Use it for,” say what you're taking from the photo: the outfit, the background, or both.</small>
+                <button class="copy" type="button" data-copy="prompt-en">Copy request</button>
+              </div>
+              <p class="two-ref"><b>Two references?</b> Upload them in order, with the screenshot last. The middle lines of the request become:</p>
+              <div class="prompt small">@Image1 — the reference photo, the first image. Use it for: the outfit only. What it shows: <span class="fill">[…]</span>.
+@Image2 — the reference photo, the second image. Use it for: the background only. What it shows: <span class="fill">[…]</span>.
+@Video1 — the source video; the third image is a screenshot of one of its frames.</div>
+              <p class="limit-note">With two references you'll have four files — free ChatGPT may not have enough uploads left, so Claude is easier.</p>
+              <p class="result-line"><b>What you get:</b> a ready-to-use prompt in English for Seedance, plus a short breakdown in the language you wrote your request in — what's in the prompt and why.</p>
             </div>
           </div>
         </li>
@@ -425,49 +504,103 @@ Follow the format and rules in the instructions.</div>
         <li class="step">
           <div class="num">03</div>
           <div>
-            <h3>Paste the prompt into Seedance 2.5</h3>
-            <p>Open whichever platform you use for Seedance 2.5. Upload your original video and your reference photos — one or more, for the outfit and the location. Paste in the finished prompt and hit generate.</p>
+            <h3>Run the generation in Seedance 2.5</h3>
+            <ol class="howto">
+              <li>Open Seedance 2.5 on Segmind (or another platform that has it).</li>
+              <li>Upload your original video and reference photos in the same order as in the prompt.</li>
+              <li>Paste in the prompt and hit generate.</li>
+            </ol>
+            <a class="btn secondary small" href="https://www.segmind.com/models/seedance-2.5" target="_blank" rel="noopener">Open Seedance 2.5 on Segmind ↗</a>
             <div class="important">
-              <b>The PDF goes into ChatGPT or Claude only.</b> Seedance just gets the finished prompt — and it doesn't need the screenshot either.
+              <b>Seedance only gets the video and the references.</b> The Prompt Engine file and the screenshot don't go there.
+            </div>
+            <div class="fix">
+              <b>If the result isn't right</b>
+              <ul>
+                <li>the face or the movement changed — check that the prompt has the lines about what to keep;</li>
+                <li>the outfit or the location doesn't match — describe it in more detail under Details;</li>
+                <li>too much changed — change one thing at a time: first the outfit, then the location.</li>
+              </ul>
             </div>
           </div>
         </li>
       </ol>
     </section>
 
-    <!-- 7. What the Prompt Engine adds -->
+    <!-- 6. Common mistakes -->
+    <section>
+      <h2>Common mistakes</h2>
+      <div class="mistakes">
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Writing “make it look like the photo”</h3>
+          <p>The model won't know what to take. Give it a role: <code>@Image1 is the reference for the outfit</code>.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Not saying what to keep</h3>
+          <p>Then Seedance may change the face, the movement and the camera.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Describing things in general terms</h3>
+          <p>“Beautiful” isn't an instruction. Describe the color, the fabric, the place, the light.</p>
+        </div>
+        <div class="mistake">
+          <h3><span class="x" aria-hidden="true"></span>Uploading the Prompt Engine or the screenshot to Seedance</h3>
+          <p>They're only for ChatGPT or Claude.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Why a simple template isn't always enough -->
     <section id="engine">
-      <h2>You can do it yourself. Here's what's easy to miss</h2>
-      <p class="section-lead">Results in Seedance come down to the small stuff. The Prompt Engine looks at your frame and your reference and spells it all out for you.</p>
+      <h2>Why a simple template isn't always enough</h2>
+      <p class="section-lead">The template above gets you a usable result for simple edits. But in a complex scene — say, two people, a new location and moving water — the result depends on details that are easy to miss.</p>
       <div class="vs">
         <div class="vs-col">
           <h3>Writing it yourself</h3>
-          <p>You have to think through and describe all of this on your own:</p>
+          <p>You have to think through:</p>
           <ul>
-            <li>the outfit — fabric, cut, color, texture, details;</li>
-            <li>the new place — foreground, middle ground and background;</li>
-            <li>lighting that matches on the person and the background;</li>
-            <li>how the fabric moves with the body and in the wind;</li>
-            <li>motion in the scene: water, leaves, fish, birds;</li>
-            <li>a long list of "don'ts" to prevent artifacts.</li>
+            <li>the outfit: fabric, cut, color, texture;</li>
+            <li>the new place: what's in the foreground, middle ground and background;</li>
+            <li>light on the person and on the background, so they match;</li>
+            <li>how the fabric moves and reacts to wind;</li>
+            <li>motion in the scene: water, leaves, birds;</li>
+            <li>what to rule out so distortions don't appear.</li>
           </ul>
         </div>
         <div class="vs-col pe">
           <h3>With the Prompt Engine</h3>
-          <p>You describe the edit in one line — it handles the rest:</p>
+          <p>It does this for you:</p>
           <ul>
-            <li>reads your reference and describes the outfit and the place precisely;</li>
+            <li>looks at your frame and reference and describes the outfit and the place precisely;</li>
             <li>gives every file a clear role, so Seedance never mixes them up;</li>
-            <li>matches light, shadows and reflections to the new location;</li>
-            <li>adds fabric physics and natural motion in the scene;</li>
-            <li>locks the face, body, movement and camera;</li>
-            <li>follows 21 sections of rules, checks the prompt and adds a quality block.</li>
+            <li>matches light and shadows to the new place;</li>
+            <li>adds natural motion to the fabric and the scene;</li>
+            <li>protects the face, body, movement and camera;</li>
+            <li>checks that nothing is missing.</li>
           </ul>
         </div>
       </div>
 
-      <h3 style="margin:0 0 6px;font-size:22px;letter-spacing:-.01em">A real example: a prompt from the Prompt Engine</h3>
-      <p class="eg" style="margin:0 0 16px">Seedance got the original video and a single reference photo — for both the outfits and the location. Here's the prompt the Prompt Engine wrote for them.</p>
+      <div class="result">
+        <p class="result-h"><b>What a Prompt Engine prompt is made of.</b> Only the blocks your edit needs:</p>
+        <ol class="blocks">
+          <li><code>FILES &amp; ROLES</code><span>what comes from the video, what from the reference</span></li>
+          <li><code>EDITING TASK</code><span>exactly what changes</span></li>
+          <li><code>OUTFIT</code><span>the clothes: fabric, cut, color, details</span></li>
+          <li><code>ENVIRONMENT</code><span>the new place, layer by layer</span></li>
+          <li><code>NATURAL MOTION</code><span>wind, fabric, water, leaves</span></li>
+          <li><code>LIGHTING</code><span>light that fits the new place</span></li>
+          <li><code>CHARACTER</code><span>protects the face and body</span></li>
+          <li><code>MOTION</code><span>movement and timing stay the same</span></li>
+          <li><code>CAMERA</code><span>the camera, as in the original</span></li>
+          <li><code>INTEGRATION</code><span>the person sits in the scene, not pasted on</span></li>
+          <li><code>CRITICAL</code><span>what changes, what stays, what's off-limits</span></li>
+          <li><code>QUALITY</code><span>quality and protection from distortions</span></li>
+        </ol>
+      </div>
+
+      <h3 class="ex-h">A real example</h3>
+      <p class="eg" style="margin:0 0 16px">Seedance got the original video and a single photo — for both the outfits and the location. Here's the start of the prompt the Prompt Engine wrote.</p>
       <div class="example-wrap">
         <figure class="example-shot">
           <img src="example-restaurant.jpg" width="720" height="720" loading="lazy" alt="Left: the original video of a couple in a bedroom. Right: the same couple in new outfits in an underwater restaurant">
@@ -504,64 +637,17 @@ Dress the woman from @Video1 in the dark navy-blue fitted mini dress shown in @I
       </div>
     </section>
 
-    <!-- 8. Multiple references -->
-    <section>
-      <h2>Using more than one reference</h2>
-      <p class="section-lead">Upload the photos in order and give each one a role, so the model never mixes up what comes from where.</p>
-      <ul class="map">
-        <li><code>@Video1</code><span>the original video and the person (first image: a screenshot of it)</span></li>
-        <li><code>@Image1</code><span>second image — outfit only</span></li>
-        <li><code>@Image2</code><span>third image — background only</span></li>
-      </ul>
-      <p class="eg">One reference for both the outfit and the background works too. Just say so explicitly — the Prompt Engine will separate the two within the same image.</p>
-    </section>
-
-    <!-- 9. Common mistakes -->
-    <section>
-      <h2>Common mistakes</h2>
-      <div class="mistakes">
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Writing “make it look like the photo”</h3>
-          <p>The model won't know what to take. Give it a role: <code>@Image1 — outfit reference</code> or <code>@Image1 — background reference</code>.</p>
-        </div>
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Not saying what has to stay</h3>
-          <p>If you don't say the face, the movement and the camera stay the same, Seedance may change those too.</p>
-        </div>
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Describing things in general terms</h3>
-          <p>“Beautiful” and “cinematic” aren't instructions. Describe the color, the fabric, the place, the light.</p>
-        </div>
-        <div class="mistake">
-          <h3><span class="x" aria-hidden="true"></span>Uploading the PDF or the screenshot to Seedance</h3>
-          <p>The Prompt Engine and the screenshot are for ChatGPT or Claude only. Seedance gets the video, the references and the finished prompt.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. Where to run it -->
-    <section>
-      <h2>Where to run Seedance 2.5</h2>
-      <div class="platform">
-        <p>
-          I run Seedance 2.5 on Segmind myself — partly because generations there are reasonably priced.
-          But the guide and the Prompt Engine aren't tied to any platform: they work with Seedance 2.5 wherever you use it.
-        </p>
-        <a class="btn secondary" href="https://www.segmind.com/models/seedance-2.5" target="_blank" rel="noopener">Seedance 2.5 on Segmind ↗</a>
-      </div>
-    </section>
-
-    <!-- 11. Final call to action -->
+    <!-- 8. Final call to action -->
     <div class="final">
       <h2>Stop wasting generations on trial and error</h2>
-      <p>Now you know the workflow. The Prompt Engine saves you time and generations: describe the edit, and it tells Seedance what to change — and what to keep. Your purchase includes two files:</p>
+      <p>One 30-second generation in 720p on Segmind costs about $7 — the same as the Prompt Engine. If it saves you even one failed attempt, it has already paid for itself.</p>
+      <p class="get-h">Your purchase includes two files:</p>
       <ul class="get">
-        <li><b>Prompt Engine (PDF)</b>The instruction file you upload to ChatGPT or Claude. Describe the edit in plain words — it writes the finished Seedance 2.5 prompt for you.</li>
-        <li><b>Examples (PDF) — included</b>Real before-and-after frames, plus what the finished request looks like inside Seedance 2.5. For reading only — nothing in it gets uploaded.</li>
+        <li><b>Prompt Engine (PDF)</b>Upload it to ChatGPT or Claude — it writes a ready-to-use Seedance 2.5 prompt.</li>
+        <li><b>Examples (PDF)</b>Real before-and-after frames, plus what the finished request looks like inside Seedance. For reading only — nothing in it gets uploaded.</li>
       </ul>
-      <p class="final-pay">It pays for itself the first time it saves you a failed generation.</p>
       <a class="btn" href="https://aitesttube.gumroad.com/l/pdwsxr" target="_blank" rel="noopener" data-cta>Get the Prompt Engine · <span class="price">$7</span></a>
-      <p class="final-note">2 PDFs, delivered instantly via Gumroad</p>
+      <p class="final-note">2 PDFs in English, delivered instantly via Gumroad. The Prompt Engine works in ChatGPT or Claude, and the prompt it writes works with Seedance 2.5 on any platform.</p>
     </div>
 
     <section id="follow" style="border-top:0;padding-bottom:0">
