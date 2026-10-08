@@ -1,0 +1,5 @@
+# Search engines and AI assistants are welcome to read and cite this guide.
+User-agent: *
+Allow: /
+
+Sitemap: https://ai-edit-lab.pages.dev/sitemap.xml
